@@ -180,7 +180,7 @@
                         <img ng-src="images/user/1.jpg" src="images/user/1.jpg">
                     </profile-image-viewer>
                </div>
-               <h5 class="mb-0 ng-binding">Jay N, 30 years<br>
+               <h5 class="mb-0 ng-binding">Jay N, 55 years<br>
                   <small class="text-primary ng-binding">JAY-N-221122-102633</small>,
                   <small class="text-default ng-binding">+6400000000</small>,
                   <small class="text-default ng-binding">test address</small>
@@ -190,7 +190,7 @@
 
             <div class="iq-card-header-toolbar d-flex align-items-center">
                <a ui-sref="main.patientdashboard({vuuid:visitUuid})" href="#!/patientdashboard/72e46ea4-e50a-4a5d-994c-f58923342b97">
-                  <!-- ngIf: visitUuid && visitUuid != '0' --><button type="button" ng-if="visitUuid &amp;&amp; visitUuid != '0'" class="btn btn-primary rounded-pill mr-2 ng-binding ng-scope">Patient Dashboard
+                  <!-- ngIf: visitUuid && visitUuid != '0' --><button type="button" ng-if="visitUuid &amp;&amp; visitUuid != '0'" class="btn btn-primary rounded-pill mr-2 ng-binding ng-scope">Back to Dashboard
                      <i class="fa fa-arrow-circle-right"></i>
                   </button><!-- end ngIf: visitUuid && visitUuid != '0' -->
                </a>
@@ -228,7 +228,22 @@
 										<li class="nav-item">
 											<a class="nav-link " id="consent-tab" data-toggle="tab" href="#consent" role="tab" aria-controls="consent" aria-selected="false">Clinic Assessment</a>
 										</li>
-										
+										<li>
+											<button class="btn btn-primary1 rounded-pill ml-2" type="submit">Screening <i class="fa fa-arrow-circle-right"></i></button>
+										</li>
+										<style>
+											.btn-primary1 {
+											    color: #fff;
+											    background: #091a30 !important;
+											    border-color: #091a30;
+											    box-shadow: 0 0.125rem 0.625rem #091a306e, 0 0.0625rem 0.125rem #091a3070;
+											}
+											.btn-primary1:hover {
+											    color: #fff;
+											    background: #091a30 !important;
+											    border-color: #091a30;
+											}
+										</style>
 									</ul>
 <style>
 .list-cstm{
