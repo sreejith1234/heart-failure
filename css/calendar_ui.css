@@ -1,0 +1,99 @@
+.event-section{
+   display: none;
+}
+   .cal-usrlist-img img {
+    width: 37px;
+    border-radius: 10px;
+}
+.cal-add-users {
+    width: 25rem;
+    display: none;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    z-index: 1;
+    -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    background-color: #ffffff;
+    transition: all 0.3s;
+    padding: 0;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 25px 0px rgb(45 69 95 / 10%);
+    -moz-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
+    box-shadow: 0px 0px 25px 0px rgb(45 69 95 / 10%);
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
+}
+.cal-data-right {
+    border-radius: 25px;
+}
+.cal-popup-channel {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 18rem);
+}
+.cal-sidebar-channel{
+   height: calc(100vh - 24rem);
+   padding-top: 10px;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+.cal-head header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+}
+.user-list-cal {
+    border: none;
+    text-decoration: none;
+    display: block;
+    padding: 15px 15px;
+    border-bottom: 1px solid #f1f2f1;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 0px;
+    margin-bottom: 15px;
+}
+.cal-list-close{
+   font-size: 16px;
+}
+.cal-selected-list {
+    display: flex;
+    padding: 0px 0px 10px 0px;
+    flex-wrap: wrap;
+}
+.cal-user-name {
+    font-size: 12px;
+    font-weight: 300;
+    color: #18191b;
+    padding: 0px 5px;
+
+}
+.cal-selected-users{
+   align-items: center;
+   background-color: #e4e5e7;
+   border: 1px solid transparent;
+   border-radius: 2px;
+   display: inline-flex;
+   outline: none;
+   white-space: nowrap;
+   margin-right: 0.5rem;
+   float: left;
+   padding-right: 0px;
+   padding-bottom: 0px;
+   margin-bottom: 0.5rem;
+}
+.cal-user-remove{
+   cursor: pointer;
+   padding: 0px 5px;
+}
+.cal-user-remove:hover{
+   background-color: #d7d9df;
+   color: #000;
+}
