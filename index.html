@@ -229,7 +229,7 @@
 											<a class="nav-link " id="consent-tab" data-toggle="tab" href="#consent" role="tab" aria-controls="consent" aria-selected="false">Clinic Assessment</a>
 										</li>
 										<li>
-											<button class="btn btn-primary1 rounded-pill ml-2" type="submit">Screening <i class="fa fa-arrow-circle-right"></i></button>
+											<button class="btn btn-primary1 rounded-pill ml-2" type="submit">Screening Data <i class="fa fa-arrow-circle-right"></i></button>
 										</li>
 										<style>
 											.btn-primary1 {
@@ -385,7 +385,7 @@ style="height: 100%;">
                         <label class="custom-control-label" for="customRadio8"> symptomatic</label>
                      </div>
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
+                        <input type="radio" id="customRadio7" name="customRadio6" class="custom-control-input">
                         <label class="custom-control-label" for="customRadio7"> asymptomatic</label>
                      </div>
                      
@@ -450,146 +450,167 @@ style="height: 100%;">
 							<label>Amended dose: </label>
 							<input type="text" class="form-control" name="fname" placeholder="">
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label>Amended dose: </label>
-							<input type="text" class="form-control" name="fname" placeholder="">
-						</div>
-					</div>			
+					</div>		
 				</div>
 			</div>
 		</div>
 	</div>
+<style>
+	.bt-hd-col {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin: 0px 0px;
+}
+.bt-head {
+    color: black;
+    margin: 0px 0px;
+}
+.bt-label p {
+    color: #888787;
+    font-size: 12px;
+}
+.bt-label p, .bt-label label {
+    margin-bottom: 0px;
+}
 
+.blood-normal-range-txt {
+    font-size: 9px !important;
+    max-width: 120px;
+}
+</style>
 
 		<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="iq-card">
 						<div class="iq-card-body">
-							<table class="table table-borderless">
-								<thead>
-									<tr>
-										<th scope="col">BLOOD PARAMETERS</th>
-										<th scope="col">Date</th>
-										<th scope="col">Date</th>
-										<th scope="col">Date</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Sodium</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Potassium</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Urea</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Creatinine</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>eGFR</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>Glucose</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-										<td>
-											<div class="input-group">
-												<input type="text" class="form-control">
-											</div>
-										</td>
-									</tr>
-									
-								</tbody>
-							</table>
-							<div class="col-md-12">
-											<div class="form-group">
-												<label>Comments: </label>
-												<textarea class="form-control m-b prsnt_compt-txt-area"> </textarea>
-											</div>
-										</div>
+							<div class="row">
+								<div class="bt-hd-col">
+                           <div class="bt-label bt-head">PARAMETERS</div>
+                           <div class="bt-value bt-head">VALUE</div>
+                           <div class="status-icon bt-head"></div>
+                        </div>
+                        <div class="bt-hd-col">
+                           <div class="bt-label bt-head">PARAMETERS</div>
+                           <div class="bt-value bt-head">VALUE</div>
+                           <div class="status-icon bt-head"></div>
+                        </div>
+                        <div class="bt-hd-col">
+                           <div class="bt-label bt-head">PARAMETERS</div>
+                           <div class="bt-value bt-head">VALUE</div>
+                           <div class="status-icon bt-head"></div>
+                        </div>
+								<div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">Sodium (Na+)</label>
+                              <p class="blood-normal-range-txt">134.0-145.0 mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">mmol/L</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        <div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">Potassium (k+)</label>
+                              <p class="blood-normal-range-txt">3.5-5.2 mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">mmol/L</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        <div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">Urea</label>
+                              <p class="blood-normal-range-txt"> mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">mmol/L</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        <div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">Creatinine</label>
+                              <p class="blood-normal-range-txt">F 45.0-90.0 mmol/L
+										<br>M 60.0-105.0 mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">TEST</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        <div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">eGFR</label>
+                              <p class="blood-normal-range-txt"> mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">mmol/L</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        <div class="bt-col">
+                           <div class="bt-label">
+                              <label class="ng-binding">Glucose</label>
+                              <p class="blood-normal-range-txt">4.0-8.0 mmol/L</p>
+                           </div>
+                           <div class="bt-value">
+                           	<div class="input-group">
+         								<input type="number" class="form-control" name="TEST">
+	                              <div class="input-group-prepend">
+	                                <span class="input-group-text" id="inputGroupPrepend2">mmol/L</span>
+	                            	</div>
+                              </div>
+                          	</div>
+                           <div class="status-icon" title="view status">
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Comments: </label>
+										<textarea class="form-control m-b prsnt_compt-txt-area"> </textarea>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -608,12 +629,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty1" name="weight1" class="custom-control-input" checked="">
+					                        <label class="custom-control-label" for="weighty1">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn1" name="weight1" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn1">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -623,12 +644,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty2" name="weight2" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty2">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn2" name="weight2" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn2">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -638,12 +659,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty3" name="weight3" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty3">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn3" name="weight3" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn3">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -653,12 +674,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty4" name="weight4" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty4">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn4" name="weight4" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn4">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -668,12 +689,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty5" name="weight5" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty5">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn5" name="weight5" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn5">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -683,12 +704,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty6" name="weight6" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty6">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn6" name="weight6" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn6">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -698,12 +719,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty7" name="weight7" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty7">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn7" name="weight7" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn7">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -713,12 +734,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty8" name="weight8" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty8">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn8" name="weight8" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn8">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -728,12 +749,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty9" name="weight9" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty9">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn9" name="weight9" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn9">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -743,12 +764,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightya" name="weighta" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightya">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightna" name="weighta" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightna">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -758,12 +779,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyb" name="weightb" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyb">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightnb" name="weightb" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightnb">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -773,12 +794,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyc" name="weightc" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyc">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightnc" name="weightc" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightnc">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -788,12 +809,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyd" name="weightd" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyd">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightnd" name="weightd" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightnd">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -803,12 +824,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightye" name="weighte" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightye">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightne" name="weighte" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightne">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -818,12 +839,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyf" name="weightf" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyf">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightnf" name="weightf" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightnf">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -833,12 +854,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyg" name="weightg" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyg">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightng" name="weightg" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightng">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -848,12 +869,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weightyh" name="weighth" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightyh">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightnh" name="weighth" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightnh">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -863,12 +884,12 @@ style="height: 100%;">
 										<td>
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <input type="radio" id="weighty6" name="weight6" class="custom-control-input">
+					                        <label class="custom-control-label" for="weighty6">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
-					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <input type="radio" id="weightn6" name="weight6" class="custom-control-input">
+					                        <label class="custom-control-label" for="weightn6">No</label>
 					                     </div>
 					                  </div>
 										</td>
@@ -879,11 +900,11 @@ style="height: 100%;">
 											<div class="form-group">
 					                     <div class="custom-control custom-radio custom-control-inline">
 					                        <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
-					                        <label class="custom-control-label" for="customRadio8">yes</label>
+					                        <label class="custom-control-label" for="customRadio8">Yes</label>
 					                     </div>
 					                     <div class="custom-control custom-radio custom-control-inline">
 					                        <input type="radio" id="customRadio7" name="customRadio1" class="custom-control-input">
-					                        <label class="custom-control-label" for="customRadio7">no</label>
+					                        <label class="custom-control-label" for="customRadio7">No</label>
 					                     </div>
 					                  </div>
 										</td>
