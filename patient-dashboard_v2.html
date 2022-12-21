@@ -1,0 +1,2291 @@
+
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title></title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="images/favicon.ico" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="css/typography.css">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/custom.css">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css">
+       <!-- Full calendar -->
+      <!-- <link href='fullcalendar/core/main.css' rel='stylesheet' />
+      <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+      <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+      <link href='fullcalendar/list/main.css' rel='stylesheet' /> -->
+
+      <link rel="stylesheet" href="css/flatpickr.min.css">
+
+      <style>
+.edit-icon{
+   display: none;
+}
+
+
+.quiz-chartTip {
+padding: 5px 10px;
+border: 1px solid rgba(0,0,0,.1);
+border-radius: 4px;
+background-color: rgba(255,255,255,.9);
+box-shadow: 3px 3px 10px rgba(0,0,0,.1);
+position: absolute;
+z-index: 50;
+max-width: 250px;
+}
+.quiz-graph {
+padding: 10px;
+height: 370px;
+width: 100%;
+}
+.quiz-graph .x-labels {
+text-anchor: middle;
+}
+.quiz-graph .y-labels {
+text-anchor: end;
+}
+.quiz-graph .quiz-graph-grid {
+stroke: #ccc;
+stroke-dasharray: 0;
+stroke-width: 1;
+}
+.label-title {
+text-anchor: middle;
+text-transform: uppercase;
+font-size: 12px;
+fill: gray;
+}
+.quiz-graph-dot, .quiz-graph-start-dot{
+fill: #82b440;
+stroke-width: 2;
+stroke: white;
+}
+
+.summary-popup {
+    min-height: 60% !important;
+    max-width: 67% !important;
+}
+.summary-popup .modal-header {
+    flex-wrap: wrap;
+    padding: 1rem 1rem 0rem 1rem;
+}
+</style>
+
+
+   </head>
+   <body class="sidebar-main-menu">
+      <!-- loader Start -->
+      <div id="loading">
+         <div id="loading-center">
+
+         </div>
+      </div>
+      <!-- loader END -->
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+               <a href="index.html">
+               <img src="images/logo.png" class="img-fluid" alt="">
+               <!-- <span>Logo</span> -->
+               </a>
+               <div class="iq-menu-bt-sidebar">
+                     <div class="iq-menu-bt align-self-center">
+                        <div class="wrapper-menu">
+                           <div class="main-circle"><i class="fa fa-ellipsis-h ft-12"></i></div>
+                           <div class="hover-circle"><i class="fa fa-ellipsis-v ft-12"></i></div>
+                        </div>
+                     </div>
+                  </div>
+            </div>
+            <div id="sidebar-scrollbar">
+               <nav class="iq-sidebar-menu">
+                  <ul id="iq-sidebar-toggle" class="iq-menu">
+                     <li class="iq-menu-title"><i class="fa fa-minus ft-12"></i><span>Menu</span></li>
+                     <li>
+                        <a href="index.html" class="iq-waves-effect"><i class="ft-12 fa fa-tachometer"></i><span>Dashboard</span></a>
+                     </li>
+                     <li class="active">
+                        <a href="patient.html" class="iq-waves-effect"><i class="ft-12 fa fa-user"></i><span>Patient</span></a>
+                     </li>                      
+                  </ul>
+               </nav>
+               <div class="p-3"></div>
+            </div>
+            <div class="iq-logout" title="Logout">
+               <img src="./images/logout.png">
+            </div>
+            <div class="iq-sidebar-logo d-flex copyright ng-scope">
+               <a href="#"> 
+                  <span>Copyright 2021 ahimsa.global</span>
+               </a>
+            </div>
+         </div>
+         
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+
+            <div class="iq-top-navbar header-top-sticky ng-scope" ng-controller="AppHeaderController"> 
+         <div class="iq-navbar-custom">
+            <div class="iq-sidebar-logo">
+               <div class="top-logo">
+                  <a href="index.html" class="logo">
+                  <img src="/images/logo.png" class="img-fluid" alt="">
+                  <span></span>
+                  </a>
+               </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+               
+               <div class="logo-text-top">
+                  <span class="logo-text ng-binding">Hāpaitia te Hauora Manawa</span>
+                     <!-- <span class="logo-text-sub-topbar">{{'remote.health.evaluation'|translate}}</span> -->
+               </div>
+
+              
+
+               <div class="iq-menu-bt align-self-center">
+                  <div class="wrapper-menu warpper-m-menu">
+                     <div class="main-circle"><i class="fa fa-align-left"></i></div>
+                        <div class="hover-circle"><i class="fa fa-ellipsis-h"></i></div>
+                  </div>
+               </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-th-large" aria-hidden="true"></i>
+               </button>
+
+               
+
+               <!-- Popup -->
+               <!-- ngIf: showChatNotificationDiv -->
+
+               <div class="iq-sub-dropdown ng-hide" id="" style="display:none;" ng-show="videoCallAlert.show">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Incoming Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                 </div>
+                                 <div class="iq-sub-card b-none">
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/01.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ng-binding"></h6>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="text-center mb-4">
+                                    <button type="button" id="chat-start" class="btn bg-primary" ng-click="acceptCall()">
+                                       <a class="text-white" data-toggle="pill" href="#video-call">Accept</a>
+                                    </button>
+                                    <button id="cancel" type="button" class="btn btn-secondary" ng-click="rejectCall()">      Cancel
+                                    </button>
+                                    <audio id="audio" src="/sound/v-call.mp3" loop="loop"></audio>
+                                 </div>
+
+                              </div>
+                           </div>
+                        </div>
+                        
+
+               <!-- Popup -->
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 <ul class="navbar-nav ml-auto navbar-list">
+                     <!-- <li class="nav-item dropdown">
+                        <div class="iq-sub-dropdown" id="" style="display:block;" ng-show = "videoCallAlert.show" >
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Incoming Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                 </div>
+                                 <div class="iq-sub-card b-none">
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/01.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">{{videoCallAlert.caller}}</h6>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="text-center mb-4">
+                                    <button type="button" id="chat-start" class="btn bg-primary" ng-click="acceptCall()">
+                                       <a  data-toggle="pill" href="#video-call" style="color:#fff;">Accept</a>
+                                    </button>
+                                    <button id="cancel" type="button" class="btn btn-secondary" ng-click="rejectCall()">      Cancel
+                                    </button>
+                                    <audio id="audio" src="/sound/v-call.mp3" loop="loop"></audio>
+                                 </div>
+
+                              </div>
+                           </div>
+                        </div>
+                        <div class="iq-sub-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white">Make a Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                 </div>
+                                 <a href="#" class="iq-sub-card" >
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/01.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Dr. Barb Dwyer</h6>
+                                          <small class="float-left font-size-12">Online</small>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card" >
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/04.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Dr. Terry Aki 
+                                             <small class="float-right font-size-12">
+                                                <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                             </small>
+                                          </h6>
+                                          <small class="float-left font-size-12">Offline (last seen 5 min ago)
+                                             
+                                          </small>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card" >
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/01.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Dr. Robin Banks
+                                             <small class="float-right font-size-12">
+                                                <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                             </small>
+                                          </h6>
+                                          <small class="float-left font-size-12">Offline (last seen 10 min ago)</small>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card" >
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/04.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Dr. Barry Wine</h6>
+                                          <small class="float-left font-size-12">Online</small>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="iq-sub-card" >
+                                    <div class="media align-items-center">
+                                       <div class="">
+                                          <img class="avatar-40 rounded" src="/images/user/05.jpg" alt="">
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Dr. Otto Matic</h6>
+                                          <small class="float-left font-size-12">Online</small>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </li> -->
+                     <!-- <li class="nav-item">
+                        <a class="search-toggle iq-waves-effect"  >
+                           <i class="fa fa-bell" ng-click = "goToChatPage()"></i>
+                           <span class="bg-danger dots" ng-show = "chatMessageAlertActive" ></span>
+                        </a>
+               
+                     </li> -->
+                     <li class="nav-item">
+                        <a class="search-toggle iq-waves-effect" ui-sref="main.chat({duuid:0})" href="#!/chat0">
+                           <i class="fa fa-comments-o" ng-click="goToChatPage()"></i>
+                           <span class="bg-danger dots ng-hide" ng-show="chatMessageAlertActive"></span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="search-toggle iq-waves-effect language-title ng-binding">
+                           <i class="fa fa-language"></i> English
+                        </a>
+                        <div class="iq-sub-dropdown lang-selected-dropdown">
+                           <!-- ngRepeat: lang in localeHandler.languages --><div class="iq-sub-card language-title ng-binding ng-scope lang-active" ng-repeat="lang in localeHandler.languages" ng-class="{'lang-active':lang.code === localeHandler.activeLanguage.code}" ng-click="localeHandler.changeLocaleEvent(lang)">
+                              English 
+                              <!-- ngIf: lang.code === localeHandler.activeLanguage.code --><span class="lang-selected ng-scope" ng-if="lang.code === localeHandler.activeLanguage.code"><i class="fa fa-check" aria-hidden="true"></i></span><!-- end ngIf: lang.code === localeHandler.activeLanguage.code -->
+                           </div><!-- end ngRepeat: lang in localeHandler.languages --><div class="iq-sub-card language-title ng-binding ng-scope" ng-repeat="lang in localeHandler.languages" ng-class="{'lang-active':lang.code === localeHandler.activeLanguage.code}" ng-click="localeHandler.changeLocaleEvent(lang)">
+                              Māori 
+                              <!-- ngIf: lang.code === localeHandler.activeLanguage.code -->
+                           </div><!-- end ngRepeat: lang in localeHandler.languages -->
+                        </div>
+                     </li>
+                  </ul>                   
+               </div>
+
+
+
+               <ul class="navbar-list">
+                  
+                  <!-- <li>
+                     <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                        <i class="fa fa-language" aria-hidden="true"></i>
+                     </a>
+                     <div class="iq-sub-dropdown iq-user-dropdown">
+                        <div class="iq-card shadow-none m-0">
+                           <div class="iq-card-body p-0 ">
+                              <div class="bg-primary p-3">
+                                 <h5 class="mb-0 text-white line-height"></h5>
+                                 <span class="text-white font-size-12">Select Language</span>
+                              </div>
+                              <a  class="iq-sub-card iq-bg-primary-hover">
+                                 <div class="media align-items-center">
+                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                       <i class="fa fa-language" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body ml-3" ng-repeat = "lang in localeHandler.languages"
+                                     ng-click = "localeHandler.changeLocaleEvent(lang)">
+                                       <h6 class="mb-0 active">{{lang.name}}</h6>
+                                       <p class="mb-0 font-size-12"></p>
+                                    </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </li> -->
+               
+                  <li>
+                     <a class="search-toggle iq-waves-effect d-flex align-items-center">
+                        <img src="images/user/nurse.jfif" class="img-fluid rounded mr-3" alt="user">
+                        <div class="caption">
+                           <span class="font-size-12 ng-binding">Evelyn Jackson vi</span>
+                           <h6 class="mb-0 line-height ng-binding">Nurse specialist</h6>
+                        </div>
+                     </a>
+                     <div class="iq-sub-dropdown iq-user-dropdown">
+                        <div class="iq-card shadow-none m-0">
+                           <div class="iq-card-body p-0 ">
+                              <!-- <div class="bg-primary p-3">
+                                 <h5 class="mb-0 text-white line-height"></h5>
+                                 <span class="text-white font-size-12">Select Language</span>
+                              </div>
+                              <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <div class="media align-items-center">
+                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                       <i class="fa fa-language" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                       <h6 class="mb-0 ">Maori</h6>
+                                       <p class="mb-0 font-size-12"></p>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                       <h6 class="mb-0 ">English</h6>
+                                       <p class="mb-0 font-size-12"></p>
+                                    </div>
+                                 </div>
+                              </a> -->
+                              <!-- <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <div class="media align-items-center">
+                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                       <i class="fa fa-address-card" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                       <h6 class="mb-0 ">Edit Profile</h6>
+                                       <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                    </div>
+                                 </div>
+                              </a>
+                              <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <div class="media align-items-center">
+                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                       <i class="fa fa-cog" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                       <h6 class="mb-0 ">Account settings</h6>
+                                       <p class="mb-0 font-size-12">Manage your account parameters.</p>
+                                    </div>
+                                 </div>
+                              </a>
+                              <a href="privacy-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <div class="media align-items-center">
+                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                       <i class="fa fa-lock" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body ml-3">
+                                       <h6 class="mb-0 ">Privacy Settings</h6>
+                                       <p class="mb-0 font-size-12">Control your privacy parameters.</p>
+                                    </div>
+                                 </div>
+                              </a> -->
+                              <a ui-sref="main.userprofile" class="iq-sub-card iq-bg-primary-hover" href="#!/userprofile">
+                                   <div class="media align-items-center">
+                                      <div class="rounded iq-card-icon iq-bg-primary">
+                                         <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                      </div>
+                                      <div class="media-body ml-3">
+                                         <h6 class="mb-0 ng-binding">My Profile</h6>
+                                         <p class="mb-0 font-size-12">View personal profile details.</p>
+                                      </div>
+                                   </div>
+                                </a>
+                              <div class="d-inline-block w-100 text-center p-3">
+                                 <a class="bg-primary iq-sign-btn text-white ng-binding" ng-click="logout()">Sign out <i class="fa fa-sign-out"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </nav>
+
+         </div>
+
+
+         <!-- ng -nclude video controller -->
+    
+
+         <!-- ng -nclude video controller -->
+
+
+
+      </div>
+
+
+         <!-- <div class="iq-top-navbar header-top-sticky">
+            <div class="iq-navbar-custom">
+               <div class="iq-sidebar-logo">
+                  <div class="top-logo">
+                     <a href="index.html" class="logo">
+                     <img src="images/logo.png" class="img-fluid" alt="">
+                     <span></span>
+                     </a>
+                  </div>
+               </div>
+               <nav class="navbar navbar-expand-lg navbar-light p-0">
+                  <div class="logo-text-top">
+                     <span class="logo-text">Hāpaitia te Hauora Manawa</span>
+                        <span class="logo-text-sub-topbar">Remote Health Evaluation & Information Management System</span>
+                  </div>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="ri-menu-3-line"></i>
+                  </button>
+                  <div class="iq-menu-bt align-self-center">
+                     <div class="wrapper-menu">
+                        <div class="main-circle"><i class="ri-more-fill"></i></div>
+                           <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                     </div>
+                  </div>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto navbar-list">
+                        <li class="nav-item">
+                           <a class="search-toggle iq-waves-effect language-title" href="#"><i style="font-size:20px;margin-right: 5px;" class="fa fa-map-marker" aria-hidden="true"></i> English <i class="ft-12 fa fa-chevron-down"></i></a>
+                           <div class="iq-sub-dropdown">
+                              <a class="iq-sub-card" href="#"><img src="images/small/flag-02.png" alt="img-flaf" class="img-fluid mr-2">French</a>
+                              <a class="iq-sub-card" href="#"><img src="images/small/flag-03.png" alt="img-flaf" class="img-fluid mr-2">Spanish</a>
+                           </div>
+                        </li>
+                        <li class="nav-item iq-full-screen">
+                           <a href="#" class="iq-waves-effect" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="#" class="search-toggle iq-waves-effect">
+                                 <i class="fa fa-bell"></i>
+                                 <span class="bg-danger dots"></span>
+                              </a>
+                           <div class="iq-sub-dropdown">
+                              <div class="iq-card shadow-none m-0">
+                                 <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                       <h5 class="mb-0 text-white">All Notifications<small class="badge  badge-light float-right pt-1">4</small></h5>
+                                    </div>
+
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/m.png" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">New Patient added</h6>
+                                             <small class="float-right font-size-12">1 min ago</small>
+                                             <p class="mb-0">Petey Cruiser</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/m.png" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Patient data updated</h6>
+                                             <small class="float-right font-size-12">5 min ago</small>
+                                             <p class="mb-0">Jond Bini</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/f.png" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Xray Report</h6>
+                                             <small class="float-right font-size-12">20 min ago</small>
+                                             <p class="mb-0">Anna Sthesia</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/f.png" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">New Patient added</h6>
+                                             <small class="float-right font-size-12">1 hour ago</small>
+                                             <p class="mb-0">Fenny</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                           <a href="#" class="search-toggle iq-waves-effect">
+                              <i class="fa fa-video-camera"></i>
+                              <span class="bg-primary count-mail"></span>
+                           </a>
+                           <div class="iq-sub-dropdown">
+                              <div class="iq-card shadow-none m-0">
+                                 <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                       <h5 class="mb-0 text-white">Make a Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                    </div>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Dr. Barb Dwyer</h6>
+                                             <small class="float-left font-size-12">Online</small>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Dr. Terry Aki 
+                                                <small class="float-right font-size-12">
+                                                   <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                                </small>
+                                             </h6>
+                                             <small class="float-left font-size-12">Offline (last seen 5 min ago)
+                                                
+                                             </small>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Dr. Robin Banks
+                                                <small class="float-right font-size-12">
+                                                   <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                                </small>
+                                             </h6>
+                                             <small class="float-left font-size-12">Offline (last seen 10 min ago)</small>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Dr. Barry Wine</h6>
+                                             <small class="float-left font-size-12">Online</small>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card" >
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/05.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Dr. Otto Matic</h6>
+                                             <small class="float-left font-size-12">Online</small>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+                  <ul class="navbar-list">
+                     <li>
+                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                           <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
+                           <div class="caption">
+                              <span class="font-size-12">Patient 1</span>
+                              <h6 class="mb-0 line-height"></h6>
+                              
+                           </div>
+                        </a>
+                        <div class="iq-sub-dropdown iq-user-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white line-height">Nurse Coordinator</h5>
+                                    <span class="text-white font-size-12">Available</span>
+                                 </div>
+                                 <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">My Profile</h6>
+                                          <p class="mb-0 font-size-12">View personal profile details.</p>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="fa fa-address-card" aria-hidden="true"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Edit Profile</h6>
+                                          <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="fa fa-cog" aria-hidden="true"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Account settings</h6>
+                                          <p class="mb-0 font-size-12">Manage your account parameters.</p>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="privacy-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="fa fa-lock" aria-hidden="true"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">Privacy Settings</h6>
+                                          <p class="mb-0 font-size-12">Control your privacy parameters.</p>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <div class="d-inline-block w-100 text-center p-3">
+                                    <a class="bg-primary iq-sign-btn" href="sign-in.html" role="button">Sign out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </nav>
+
+            </div>
+         </div> -->
+         <!-- TOP Nav Bar END -->
+         <style>
+            .height-auto{
+               height:auto !important;
+            }
+            .pd-img-bd{
+               width:100px;
+            }
+            .pd-img img{
+               width:100%;
+            }
+
+
+            .patient-review-note-scroll{
+               max-height:30rem;
+               height: auto;
+               overflow-y: auto;
+               overflow-x: hidden;
+            }
+            .review-note-wrapper {
+  padding: 0px;
+  max-width:95%;
+  margin: 0px;
+}
+.review-note-wrapper p{
+  margin: 0 0 0px;
+}
+
+.review-note-custom {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.more-review-note{
+    right:0px;
+    margin-top: -23px;
+    position: absolute;
+    float: right;
+    text-decoration: underline;
+    color: #089cac;
+    cursor: pointer;
+    font-size:12px;
+}
+
+         </style>
+
+
+            <div class="container-fluid">
+            	<div class=" patient-card-header">
+                                    <div class="iq-header-title">
+                                        <h3 class="mb-0 card-title text-dark ng-binding">Patient Details</h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+
+                            <div class="iq-card1 mb-3">
+                                
+                                <div class="clinical-data-nav-btn">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="p-0">
+                                                <button type="button" ng-click="goToClinicalData()" class="btn btn-primary mr-2 ng-binding">Clinical data</button>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="p-0" ui-sref="main.patiententry({vuuid:vuuid})" href="#!/patiententry/37d77f55-02cb-4cb3-a365-c20c561f31ae">
+                                                <button type="button" class="btn btn-primary mr-2 ng-binding">Patient profile</button>
+                                            </a>
+                                        </li>
+                                        <!-- ngIf: !visitShortInfoManager.visitInfo.isSignedUp -->
+                                        <has-relation must="['cn']" class="ng-isolate-scope"><!-- ngIf: $ctrl.show --></has-relation>
+                                    </ul>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+               <div class="row">
+                  <div class="col-lg-4 row m-0 p-0">
+                     <div class="col-sm-12">
+
+                     	<div class="iq-card iq-card-block iq-card-stretch iq-card-height iq-user-profile-block height-auto">
+                    <div class="iq-card-body">
+                        <div class="user-details-block">
+                            <div class="user-profile text-center clickable" ui-sref="main.patiententry({vuuid:vuuid})" href="#!/patiententry/37d77f55-02cb-4cb3-a365-c20c561f31ae">
+                                <img src="images/user/12.png" alt="profile-img" class="avatar-130 img-fluid">
+                            </div>
+                            <div class="text-center mt-3 clickable" ui-sref="main.patiententry({vuuid:vuuid})" href="#!/patiententry/37d77f55-02cb-4cb3-a365-c20c561f31ae">
+                                <h4 class="p-dashboard-mrn ng-binding">
+                                    ZCF1655 
+                                </h4>
+                                <br>
+                                <h4 class="ng-binding">  
+                                    Fields Of 
+                                    Lavender
+                                </h4>
+                                <p class="ng-binding">, 133 Molesworth Street, Thorndon, Wellington- 6011, NEW ZEALAND</p>
+                            </div>
+                           <!--  <button type="button" class="btn mb-3 btn-primary rounded-pill" data-toggle="modal" data-target="#otp">Dicom</button> -->
+                            <ul class="doctoe-sedual d-flex align-items-center justify-content-between p-0 mt-4 mb-0">
+                                <li class="text-center">
+                                    <h6 class="text-primary ng-binding">Weight</h6>
+                                    <h3 class="ng-binding">65<span>kg</span></h3>
+                                </li>
+                                <li class="text-center">
+                                    <h6 class="text-primary ng-binding">Height</h6>
+                                    <h3 class="ng-binding">168<span>cm</span></h3>
+                                </li>
+                                <!-- <li class="text-center" ng-switch="visitShortInfoManager.visitInfo.patientModel.consentData.isConsented">
+
+                                    <div ng-switch-when="true" class="chat-header-icons d-flex ng-scope">
+                                        <span class="consent-status consent-status-active">
+                                           <i class="fa fa-check"> &nbsp; Patient has given consent.</i>
+                                        </span>
+                                     </div>
+                                </li> -->
+                            </ul>
+                             <!-- <button type="button" class="btn mb-3 btn-primary rounded-pill" data-toggle="modal" data-target="#otp1">Dicom</button>
+                            <div class="modal fade show display-none"  role="dialog" aria-modal="true" id="otp1">
+                        <div class="modal-dialog modal-dialog-scrollable upload-form-modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Heading</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body popup_iframe">
+                                    <div style="margin-top: 10px; padding: 0 5px;" class="col-xs-12 col-md-6" >
+                                        <div style="padding: 0px;" class="col-md-12">
+                                            <div style="padding: 0;" class="col-xs-12 drag-drop">
+                                                <div class="file-well">
+                                                    <input id="dicom_file" type="file">
+                                                </div>
+                                            </div>
+                                        </div>      
+                                    </div>
+                                </div>
+                            <div class="modal-footer">
+                                <div class="d-inline-block w-100">
+                                    <button type="button" class="btn btn-primary rounded-pill" ng-click="upload()">Submit</button>
+                                    <button type="submit" class="btn iq-bg-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --> 
+
+                <div class="modal fade show display-none" role="dialog" aria-modal="true" id="otp">
+                        <div class="modal-dialog modal-dialog-scrollable upload-form-modal-dialog-dicom" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Dicom viewer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body popup_iframe-dicom">
+                                    <iframe title="Iframe">
+                                    </iframe>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+
+                     <!-- <div class="iq-card iq-card-block iq-card-stretch iq-card-height iq-user-profile-block height-auto">
+                        <div class="iq-card-body">
+                           <div class="user-details-block">
+                              <sree>
+                              <div class="patient-profile-img">
+                                 <img src="images/user/12.png" alt="user">
+                              </div>
+                           </sree>
+                              <div class="user-profile text-center">
+                                 <img src="images/user/12.png" alt="profile-img" class="avatar-130 img-fluid">
+                              </div>
+                           </div>
+                           <style>
+                              .patient-profile-img{
+                                 text-align: center!important;
+                                 margin-top: -85px;
+                              }
+                           .patient-profile-img img{
+							    height: 130px;
+							    width: 130px;
+							    line-height: 130px;
+							    font-size: 1.6rem;
+							}
+							</style>
+                           <div class="about-info mt-4 p-0">
+                              <div class="row">
+                                 <div class="col-4">MRN:</div>
+                                 <div class="col-8">123456</div>
+                                 <div class="col-4">First Name:</div>
+                                 <div class="col-8">Bini</div>
+                                 <div class="col-4">Last Name:</div>
+                                 <div class="col-8">Jets</div>
+                                 <div class="col-4">Age:</div>
+                                 <div class="col-8">27</div>
+                                 <div class="col-4">Email:</div>
+                                 <div class="col-8"><a href="mailto:biniJets24@demo.com"> biniJets24@demo.com </a></div>
+                                 <div class="col-4">Phone:</div>
+                                 <div class="col-8"><a href="tel:001-2351-25612">001 2351 256 12</a></div>
+                                 <div class="col-4">Location:</div>
+                                 <div class="col-8">USA</div>
+                              </div>
+                           </div>
+                           
+                        </div>
+                     </div> -->
+                     <!-- <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h5 class="card-title">Clinical Information</h5>
+                           </div>
+                        </div>
+
+                        <div class="iq-card-body">
+                           <div class="user-details-block">
+                              
+                              
+                              <ul class="doctoe-sedual d-flex align-items-center justify-content-between p-0 mt-0 mb-0">
+                                 <li class="text-center">
+                                    <h6 class="text-primary">Weight</h6>
+                                    <h3>60<span>kg</span></h3>
+                                 </li>
+                                 <li class="text-center">
+                                    <h6 class="text-primary">Height</h6>
+                                    <h3>170<span>cm</span></h3>
+                                 </li>
+                                 <li class="text-center">
+                                    <h6 class="text-primary"></h6>
+                                    <h3 class="text-warning"><span></span></h3>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div> -->
+
+
+<!-- ######## Add_Edit Clinical Info Popup ########## -->
+<div class="modal-customized add_edit_clinical_info" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="" aria-modal="true">
+   <div class="modal-dialog modal-dialog-scrollable add_edit_clinical_info-popup" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title text-primary">Edit Clinical Info</h4>
+            <button type="button" class="close print-hidden" id="close-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-md-12 text-right">
+                  <p class="mb-0 txt-sm text-danger">updated on: 21-10-2021</p>
+               </div>
+            </div>
+            <form>
+               <h5> Blood Pressure</h5>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Systolic:</label>
+                        <input type="text" class="form-control" placeholder="125">
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Diastolic:</label>
+                        <input type="text" class="form-control" placeholder="125">
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label>Heart Rate:</label>
+                  <input type="text" class="form-control" placeholder="85 bpm">
+               </div>
+               <div class="form-group">
+                  <label>Weight:</label>
+                  <input type="text" class="form-control" placeholder="68 kg">
+               </div>
+               <button type="submit" class="btn btn-primary">Save</button>
+               <button type="submit" class="btn iq-bg-danger">Cancel</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- ######## Add_Edit Clinical Info Popup Popup ########## -->
+<!-- ######## Summary Popup ########## -->
+<div class="modal-customized" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="" aria-modal="true">
+   <div class="modal-dialog modal-dialog-scrollable summary-popup" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title"><!-- Summary --></h4>
+            <button type="button" class="close print-hidden" id="close-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="sum-tab">
+               <ul class="nav nav-pills sum-nav" role="tablist">
+                  <li class="nav-item">
+                     <a class="nav-link sum-nav-link">
+                        <span><i class="fa fa-stethoscope"></i>Blood Pressure</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link sum-nav-link active">
+                        <span><i class="fa fa-heart-o"></i>Heart Rate</span>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link sum-nav-link">
+                        <span><i class="fa fa-male"></i>Weight</span>
+                     </a>
+                  </li>
+                  
+               </ul>
+            </div>
+         </div>
+         <div class="modal-body">
+            <div class="slds-p-top--medium">
+               <div>
+                  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="quiz-graph">
+                     <defs>
+                     <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                     <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#e5e5e5" stroke-width="1"></path>
+                  </pattern>
+                  </defs>
+                  <rect x="50" width="calc(100% - 50px)" height="300px" fill="url(#grid)" stroke="gray"></rect>
+                  <g class="label-title">
+                     <text x="-160" y="10" style="text-transform: lowercase;" fill="#82b440" transform="rotate(-90)">bpm</text>
+                  </g>
+                  <g class="label-title">
+                     <text x="46%" y="350" fill="#82b440">Heart Rate</text>
+                  </g>
+                  <g class="x-labels">
+                     <text x="150" y="320">12 April</text>
+                     <text x="250" y="320">20 April</text>
+                     <text x="350" y="320">12 May</text>
+                     <text x="450" y="320">15 May</text>
+                     <text x="550" y="320">16 May</text>
+                     <text x="650" y="320">18 May</text>
+                     <text x="750" y="320">22 May</text>
+                  </g>
+                  <g class="y-labels">
+                     <text x="42" y="10">90</text>
+                     <text x="42" y="55">75</text>
+                     <text x="42" y="105">60</text>
+                     <text x="42" y="155">45</text>
+                     <text x="42" y="205">30</text>
+                     <text x="42" y="255">15</text>
+                     <text x="42" y="305">0</text>
+                  </g>
+                  <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                     <stop offset="0%" style="stop-color:rgba(99,224,238,.5);stop-opacity:1"></stop>
+                     <stop offset="100%" style="stop-color:white;stop-opacity:0"></stop>
+                  </linearGradient>
+               <polyline fill="url(#grad)" stroke="#82b440" stroke-width="0" points="50,300 51,5 150,100 250,80 350,160 450,100 550,100 650,150 750,200 750,300 "></polyline>
+            <polyline fill="none" stroke="#82b440" stroke-width="2" points="50,5 150,100 250,80 350,160 450,100 550,100 650,150 750,200 "></polyline> <g>
+            <circle class="quiz-graph-start-dot" cx="50" cy="5" data-value="7.2" r="6"></circle>
+            <circle class="quiz-graph-dot" cx="150" cy="100" data-value="8.1" r="6" q-title="Q1" answer-count="200" percent-value="66%"></circle>
+            <circle class="quiz-graph-dot" cx="250" cy="80" data-value="7.7" r="6" q-title="Q2" answer-count="220" percent-value="73%"></circle>
+            <circle class="quiz-graph-dot" cx="350" cy="160" data-value="6.8" r="6" q-title="Q3" answer-count="140" percent-value="46%"></circle>
+            <circle class="quiz-graph-dot" cx="450" cy="100" data-value="6.7" r="6" q-title="Q4" answer-count="200" percent-value="66%"></circle>
+            <circle class="quiz-graph-dot" cx="550" cy="100" data-value="6.7" r="6" q-title="Q5" answer-count="200" percent-value="66%"></circle>
+            <circle class="quiz-graph-dot" cx="650" cy="150" data-value="6.7" r="6" q-title="Q6" answer-count="150" percent-value="50%"></circle>
+            <circle class="quiz-graph-dot" cx="750" cy="200" data-value="6.7" r="6" q-title="Complited Quiz" answer-count="100" percent-value="33%"></circle>
+         </g>
+      </svg>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ######## Summary Popup ########## -->
+
+                     <div class="iq-card iq-card-block">
+                    <div class="iq-card-body">
+                     <style>
+  .graph-icon {
+    background: #1d2124;
+    padding: 2px 10px;
+    font-size: 8px;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 18px;
+}
+.edit-icon {
+    background: #ffc107;
+    padding: 2px 10px;
+    font-size: 8px;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+.add-icon {
+    background: #4caf50;
+    padding: 2px 10px;
+    font-size: 8px;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 18px;
+}
+.txt-sm{
+   font-size: 10px;
+}
+.weight-icon{
+   width: 16px;
+}
+.latest-data {
+    padding-left: .25rem;
+    margin-left: 1rem;
+    margin-top: .25rem;
+    align-items: center;
+}
+
+                     </style>
+
+                                    <div class="row">
+                                       <div class="col-md-12 d-flex justify-content-end">
+                                          <span class="graph-icon mr-1"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
+                                          <span class="add-icon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                       </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="training-block d-flex align-items-center">
+                                                <div class="patient-db-icon rounded-circle iq-card-icon iq-bg-primary">
+                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h5 class="ng-binding">Heart Rate</h5>
+                                                    <p class="mb-0 ng-binding">85 bpm 
+                                                      <span class="edit-icon"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                                                   </p>
+                                                    <p class="mb-0 txt-sm">updated on: 20-10-2021</p>
+                                                    <p class="mb-0 txt-sm cursor">
+                                                      <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                                      <span class="text-danger">Latest data available</span>
+                                                   </p>
+                                                </div>
+                                            </div>
+                                            <div class="latest-data">
+                                                <div class="ml-3">
+                                                   <p class="mb-0">86 bpm</p>
+                                                   <p class="mb-0 txt-sm">updated on: 21-10-2021</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="col-md-12 mb-3">
+                                            <div class="training-block d-flex align-items-center">
+                                                <div class="patient-db-icon rounded-circle iq-card-icon iq-bg-primary">
+                                                    <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h5 class="ng-binding">Blood Pressure</h5>
+                                                    <p class="mb-0 ng-binding">120/80 mmHg <span class="edit-icon"><i class="fa fa-edit" aria-hidden="true"></i></span></p>
+                                                    <p class="mb-0 txt-sm">updated on: 20-10-2021</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="training-block d-flex align-items-center">
+                                                <div class="patient-db-icon rounded-circle iq-card-icon iq-bg-primary">
+                                                    <img src="images/weight.svg" class="weight-icon" alt="">
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h5 class="ng-binding">Weight</h5>
+                                                    <p class="mb-0 ng-binding">65kg <span class="edit-icon"><i class="fa fa-edit" aria-hidden="true"></i></span></p>
+                                                    <p class="mb-0 txt-sm">updated on: 20-10-2021</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                              
+
+                            </div>
+                        </div>
+
+                     <div class="iq-card iq-card-block">
+                    <div class="iq-card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="iq-card mb-3">
+                                <div class="iq-card-body p-0 ">
+                                    <div class="d-flex align-items-center clickable" ng-click="proformaSummaryHandler.showProformaDocument = true">
+                                        
+                                        <div class="patient-db-icon rounded-circle iq-card-icon iq-bg-primary">
+                                            <i class="fa fa-file" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="ng-binding">Patient Proforma</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ng-scope" ng-if="visitShortInfoManager.visitInfo.isBloodDataPresent">
+                            <div class="iq-card mb-2">
+                                <div class="iq-card-body p-0 ">
+                                    <div class="d-flex align-items-center clickable" ng-click="bloodTestAnalysysHandler.showPopup = true">
+                                        
+                                        <div class="patient-db-icon rounded-circle iq-card-icon iq-bg-primary">
+                                           
+                                            <i class="fa fa-bar-chart" aria-hidden="true"></i> 
+                                        </div>
+                                        <div class="ml-3">
+                                            <h5 class="ng-binding">Blood test analytics</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                        <div class="col-md-12">
+                                    <div class="data-block">
+                                        <p class="mb-0 ng-binding">Smoking</p>
+										<h5 class="text-danger ng-binding ng-scope" ng-if="visitShortInfoManager.visitInfo.smoking == 'Yes'">Yes</h5>
+                                    </div>
+                                    <style>
+                                    	.data-block{
+                                    		float: left;
+                                    		margin: 15px 25px 0px 25px;
+                                    	}
+                                    </style>
+                                    <div class="data-block">
+                                        <p class="mb-0 ng-binding">Allergies</p><h5 class="text-primary ng-binding ng-scope" ng-if="visitShortInfoManager.visitInfo.allergies != 'Yes'">No</h5>
+                                    </div>
+                                    <div class="data-block">
+                                        <p class="mb-0 ng-binding">Alcohol</p><h5 class="text-primary ng-binding ng-scope" ng-if="visitShortInfoManager.visitInfo.alcohol == 'Yes'">Yes</h5>
+                                    </div>
+                                </div>
+                    </div>
+                        
+
+                    </div>
+                </div>
+
+                  </div>
+                    
+                  </div>
+
+                
+
+                  <div class="col-lg-8">
+            <div class="iq-card iq-card-block">
+                <div class="iq-card-body pb-0">
+                    <div class="row">
+                        <!-- <div class="col-sm-12">
+
+                            <div class="iq-card mb-0">
+                                
+                                <div class="clinical-data-nav-btn">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="p-0">
+                                                <button type="button" ng-click="goToClinicalData()" class="btn btn-primary mr-2 ng-binding">Clinical data</button>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="p-0" ui-sref="main.patiententry({vuuid:vuuid})" href="#!/patiententry/37d77f55-02cb-4cb3-a365-c20c561f31ae">
+                                                <button type="button" class="btn btn-primary mr-2 ng-binding">Patient profile</button>
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </div>
+
+                                
+                            </div>
+                        </div> -->
+                        <style>
+#v-pills-tab .nav-link:hover {
+    color: #ffffff !important;
+    background: #82b440 !important;
+}
+#v-pills-tab .nav-link{
+   margin-bottom:15px;
+}
+#v-pills-tab .active {
+    color: #ffffff !important;
+    background: #82b440 !important;
+}
+.add_review_notes-btn_new {
+    background: #ffffff!important;
+    color: #82b440 !important;
+    margin-top: 5px;
+    margin-left: 10px;
+    box-shadow: none;
+    padding: 4px 10px;
+    border: solid 1px #82b440;
+    border-radius: 15px;
+}
+.message_note li {
+   list-style-type: none;
+}
+.review_note li {
+   list-style-type: none;
+}
+
+                        </style>
+<div class="col-md-12">
+   <div class="iq-card">
+      <div class="iq-card-body p-0">
+         <div class="row">
+            <div class="col-sm-2">
+               <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Review Notes</a>
+                  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Messages</a>
+               </div>
+            </div>
+            <div class="col-sm-10">
+               <div class="tab-content mt-0" id="v-pills-tabContent">
+                  <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                     <div class="iq-card-header d-flex p-0 bg-white">
+                        <span ng-clcik="reviewNotesManager.reviewNoteModel = {}" class="add_review_notes-btn_new btn ng-binding" data-toggle="modal" data-target="#review-note-popup">
+                            + Add Review Notes
+                         </span>
+                    </div>
+                     <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+                         <li class="nav-item">
+                             <a class="nav-link ng-binding active" ng-class="{'active':reviewNotesManager.reviewTypeFilter == undefined}" id="home-tab" ng-click="reviewNotesManager.reviewTypeFilter = undefined" role="tab" aria-controls="home" aria-selected="true">All</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link ng-binding" ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'COMMUNITY_NURSE'}" id="contact-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'COMMUNITY_NURSE'" role="tab" aria-controls="contact" aria-selected="false">Community Nurse</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link " ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'GP'}" id="consent-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'GP'" role="tab" aria-controls="consent" aria-selected="false">GP</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link ng-binding" ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'CARDIOLOGIST'}" id="consent-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'CARDIOLOGIST'" role="tab" aria-controls="consent" aria-selected="false">Cardiologist</a>
+                         </li>
+                     </ul>
+                     <div class="review_note" style="height: calc(100vh - 27rem); overflow-y: auto; padding-right: 10px;">
+                        <div class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Subject 1 of review note</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Johannes John</span></small>
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Subject 2 of review note</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Cardiologist</span></small>
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Subject 3 of review note</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Cardiologist</span></small>
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Subject 4 of review note</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Nurse user</span></small>
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                     </div>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                     <div class="iq-card-header d-flex p-0 bg-white">
+                        <span id="add_message_btn" ng-clcik="reviewNotesManager.reviewNoteModel = {}" class="add_review_notes-btn_new btn ng-binding" data-toggle="modal" data-target="#review-note-popup">
+                            + Add New Message
+                         </span>
+                    </div>
+                     <div style="height: calc(100vh - 27rem); overflow-y: auto; padding-right: 10px;" class="message_note">
+                        <div class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Message 1 Heading</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Message 2 Heading</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Message 3 Heading</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                         
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                         <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                             <li>
+                                 <h6 class="float-left mb-1 ng-binding">Message 4 Heading</h6>
+                                 <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                 <div class="d-inline-block w-100">
+                                     <div class="d-inline-block w-100 review-note-wrapper">
+                                         <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                     </div>
+                                 </div>
+                             </li>
+                         </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+                        <div style="display:none;" class="col-lg-12">
+                            <div class="iq-card">
+                                <div class="iq-card-header d-flex p-0 bg-white">
+                                    <div class="iq-header-title">
+                                        <h4 class="card-title text-primary ng-binding">Review Notes</h4>
+                                    </div>
+                                    <span ng-clcik="reviewNotesManager.reviewNoteModel = {}" class="add_review_notes-btn btn ng-binding" data-toggle="modal" data-target="#review-note-popup">
+                                        + Add Review Notes
+                                     </span>
+                                     <style>
+                                     	.add_review_notes-btn{
+                                     		background: #82b440!important;
+                                           color: #fff !important;
+                                           margin-left: 10px;
+                                           box-shadow: 0 0.125rem 0.625rem #8bc34a61, 0 0.0625rem 0.125rem #8bc34a52;
+                                           padding: 3px 10px;
+                                     	}
+                                     </style>
+                                </div>
+                                <div class="iq-card-body p-0">
+                                   <!--  <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link ng-binding active" ng-class="{'active':reviewNotesManager.reviewTypeFilter == undefined}" id="home-tab" ng-click="reviewNotesManager.reviewTypeFilter = undefined" role="tab" aria-controls="home" aria-selected="true">All</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link ng-binding" ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'COMMUNITY_NURSE'}" id="contact-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'COMMUNITY_NURSE'" role="tab" aria-controls="contact" aria-selected="false">Community Nurse</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'GP'}" id="consent-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'GP'" role="tab" aria-controls="consent" aria-selected="false">GP</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link ng-binding" ng-class="{'active':reviewNotesManager.reviewTypeFilter == 'CARDIOLOGIST'}" id="consent-tab" ng-click="reviewNotesManager.reviewTypeFilter = 'CARDIOLOGIST'" role="tab" aria-controls="consent" aria-selected="false">Cardiologist</a>
+                                        </li>
+                                    </ul> -->
+                                    
+                                    <div style="height: calc(100vh - 27rem); overflow-y: auto; padding-right: 10px;"> 
+
+                                       <div class="no-review-container ng-scope" ng-if="reviewNotesManager.reviewNotes.length == 0">
+                                            <p class="no-review-h1">
+                                                <i class="fa fa-info ng-binding"> &nbsp; No Review Notes</i>
+                                            </p>
+                                            <p class="no-review-h2 ng-binding">
+                                                Click on 'Add Review notes' to add new patient review.
+                                            </p>
+                                        </div>
+                                             <div class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                                                 <li>
+                                                    <h6 class="float-left mb-1 ng-binding">Subject 1 of review note</h6>
+                                                    <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                                    <div class="d-inline-block w-100">
+                                                       <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Johannes John</span></small>
+                                                       <div class="d-inline-block w-100 review-note-wrapper">
+                                                            <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                            <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                                        </div>
+                                                    </div>
+                                                 </li>
+                                             </div>
+                                             <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                                                 <li>
+                                                    <h6 class="float-left mb-1 ng-binding">Subject 2 of review note</h6>
+                                                    <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                                    <div class="d-inline-block w-100">
+                                                       <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Cardiologist</span></small>
+                                                       <div class="d-inline-block w-100 review-note-wrapper">
+                                                            <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                            <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                                        </div>
+                                                    </div>
+                                                 </li>
+                                             </div>
+                                             <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                                                 <li>
+                                                    <h6 class="float-left mb-1 ng-binding">Subject 3 of review note</h6>
+                                                    <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                                    <div class="d-inline-block w-100">
+                                                       <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Cardiologist</span></small>
+                                                       <div class="d-inline-block w-100 review-note-wrapper">
+                                                            <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                            <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                                        </div>
+                                                    </div>
+                                                 </li>
+                                             </div>
+                                             <div style="margin-top:10px;" class="col-lg-12 ng-scope" ng-repeat="review in reviewNotesManager.reviewNotes | filter : {reviewerType:reviewNotesManager.reviewTypeFilter}">
+                                                 <li>
+                                                    <h6 class="float-left mb-1 ng-binding">Subject 4 of review note</h6>
+                                                    <small class="float-right mt-1 ng-binding">2021-07-30</small>
+                                                    <div class="d-inline-block w-100">
+                                                       <small>Reviewed By:<span class="text-warning ng-binding">&nbsp;Nurse user</span></small>
+                                                       <div class="d-inline-block w-100 review-note-wrapper">
+                                                            <p class="review-note-custom ng-binding">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                            <div ng-click="reviewNotesManager.reviewNoteModel = review" class="more-review-note" data-toggle="modal" data-target="#review-note-popup">more</div>
+                                                        </div>
+                                                    </div>
+                                                 </li>
+                                             </div>
+                                          </div>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                        	 small {
+    font-size: 12px;
+    font-weight: 400;
+}
+.patient-db-icon{
+	height: auto;
+    width: auto;
+    line-height: 0px;
+    font-size: 20px;
+    background: #fff !important;
+}
+                        </style>
+                        <!-- <div class="col-lg-4">
+                            <div class="iq-card mb-0">
+                                <div class="iq-card-header d-flex justify-content-between p-0 bg-white">
+                                    <div class="iq-header-title">
+                                        <h4 class="card-title text-primary">Family history</h4>
+                                    </div>
+                                   
+                                    <div class="iq-card-header-toolbar d-flex align-items-center">
+                                        <div class="dropdown">
+                                            <div class="dropdown-menu dropdown-menu-right"
+                                                aria-labelledby="dropdownMenuButton4">
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="ri-eye-fill mr-2"></i>View</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="ri-delete-bin-6-fill mr-2"></i>Delete</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="ri-pencil-fill mr-2"></i>Edit</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="ri-printer-fill mr-2"></i>Print</a>
+                                                <a class="dropdown-item" href="#"><i
+                                                        class="ri-file-download-fill mr-2"></i>Download</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="iq-card-body p-0">
+                                    <table class="table mb-0 table-borderless table-box-shadow">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Members</th>
+                                                <th scope="col">Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Heart disease</td>
+                                                <td>Yes</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cardiac</td>
+                                                <td>No</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <!-- end ngIf: visitShortInfoManager.visitInfo.isBloodDataPresent -->
+                        <!-- <div class="col-md-3">
+                            <div class="iq-card">
+                                <div class="iq-card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            <h5 class="">ECG report</h5>
+                                            <p class="mb-0 text-primary">View report</p>
+                                        </div>
+                                        <div class="rounded-circle iq-card-icon iq-bg-primary">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-md-5">
+                            <div class="iq-card">
+                                <div class="iq-card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            <h5 class="">Discharge Summary</h5>
+                                            <p class="mb-0 text-primary">View report</p>
+                                        </div>
+                                        <div class="rounded-circle iq-card-icon iq-bg-primary">
+                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="iq-card iq-card-block">
+                <div class="iq-card-body pb-0">
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title ng-binding">Echocardiography Request</h4>
+									</div>
+								</div>
+								<style>
+									.list-group-item{
+										float: left;
+									    width: 31.3%;
+									    border: 1px solid rgb(130 180 64) !important;
+									    padding: 0.35rem 0.55rem;
+									    line-height: 16px;
+									    margin-bottom: 15px;
+									    margin-left: 10px;
+									    border-radius: .25rem;
+									}
+									.list-group{
+										flex-direction: unset;
+										flex-wrap: wrap;
+									}
+									.badge{
+										font-weight: 300;
+										padding: .1em .6em;
+										font-size: 10px;
+										border-radius: 2px;
+									}
+									.iq-card .iq-card-header{
+										min-height: auto;
+										padding: 0 0px 15px 0px !important;
+									}
+
+								</style>
+								<div class="iq-card-body p-0">
+									<ul class="list-group">
+										<!-- ngRepeat: file in reviewNotesManager.dicomfiles --><li class="list-group-item d-flex justify-content-between align-items-center ng-binding ng-scope" ng-repeat="file in reviewNotesManager.dicomfiles">
+										Test A
+										<span class="badge badge-primary badge-pill"><a class="v-p-link" ng-click="gotoSonographyPage(file.requestUuid)">view</a></span>
+										</li><!-- end ngRepeat: file in reviewNotesManager.dicomfiles --><li class="list-group-item d-flex justify-content-between align-items-center ng-binding ng-scope" ng-repeat="file in reviewNotesManager.dicomfiles">
+										Test B
+										<span class="badge badge-primary badge-pill"><a class="v-p-link" ng-click="gotoSonographyPage(file.requestUuid)">view</a></span>
+										</li><!-- end ngRepeat: file in reviewNotesManager.dicomfiles --><li class="list-group-item d-flex justify-content-between align-items-center ng-binding ng-scope" ng-repeat="file in reviewNotesManager.dicomfiles">
+										Test C
+										<span class="badge badge-primary badge-pill"><a class="v-p-link" ng-click="gotoSonographyPage(file.requestUuid)">view</a></span>
+										</li><!-- end ngRepeat: file in reviewNotesManager.dicomfiles --><li class="list-group-item d-flex justify-content-between align-items-center ng-binding ng-scope" ng-repeat="file in reviewNotesManager.dicomfiles">
+										Xray
+										<span class="badge badge-primary badge-pill"><a class="v-p-link" ng-click="gotoSonographyPage(file.requestUuid)">view</a></span>
+										</li><!-- end ngRepeat: file in reviewNotesManager.dicomfiles --><li class="list-group-item d-flex justify-content-between align-items-center ng-binding ng-scope" ng-repeat="file in reviewNotesManager.dicomfiles">
+										Need to take the sonogram
+										<span class="badge badge-primary badge-pill"><a class="v-p-link" ng-click="gotoSonographyPage(file.requestUuid)">view</a></span>
+										</li><!-- end ngRepeat: file in reviewNotesManager.dicomfiles -->
+									</ul>
+								</div>
+								<!-- ngIf: reviewNotesManager.dicomfiles.length == 0 -->
+
+                        <style>
+                        .up-section{
+                           border: solid 1px #eee;
+                           padding: 20px;
+                           height: 115px;
+                           margin-top: 20px;
+                        }
+                        .up-wrapper {
+                            padding: 0px;
+                            width: 90%;
+                            margin: 0px;
+                        }
+                        .up-txt h6 {
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 1;
+                            -webkit-box-orient: vertical;
+                            margin-top: .5rem!important;
+                        }
+                        .up-trash{
+                           width: 10%;
+                           text-align: right;
+                           margin-top: 5px;
+                        }
+                        .up-trash i {
+                            margin-right: 0px !important;
+                            color: #ec5d5b;
+                            cursor: pointer;
+                        }
+                        .up-txt{
+                           margin-bottom: 0.5rem;
+                           display: flex;
+                        }
+                        .up-error{
+                           width: 100%;
+                           margin-top: .25rem;
+                           font-size: 10px;
+                           color: #dc3545;
+                        }
+                        </style>
+
+                        <div style="display: none;" class="row">
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="up-section">
+                                 <div class="up-txt">
+                                    <div class="up-wrapper">
+                                       <h6>Lorem Ipsum is simply dummy text of the printing text of the printing</h6>
+                                    </div>
+                                    <div class="up-trash">
+                                       <i class="fa fa-trash"></i>
+                                    </div>
+                                 </div>
+                                 <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                 </div>
+                                 <div class="up-error">Error message standard dummy text.</div>
+                              </div>
+                           </div>
+                        </div>
+
+
+
+
+							</div>
+                        </div>
+                    </div>
+                </div>
+        	</div>
+         
+        </div>
+
+<!-- <div class="col-lg-8">
+	<div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+		<div class="iq-card-body pb-0">
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="iq-card">
+						<div class="iq-card-header d-flex justify-content-between">
+							<div class="iq-header-title">
+								<h4 class="card-title text-primary">Patient Details</h4>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="iq-card-body pl-0 pr-0 pb-0">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="training-block d-flex align-items-center">
+									<div class="rounded-circle iq-card-icon iq-bg-primary">
+										<i class="fa fa-heart-o" aria-hidden="true"></i>
+									</div>
+									<div class="ml-3">
+										<h5 class="">Heart Rate</h5>
+										<p class="mb-0">75 bpm</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="training-block d-flex align-items-center">
+									<div class="rounded-circle iq-card-icon iq-bg-primary">
+										<i class="fa fa-stethoscope" aria-hidden="true"></i>
+									</div>
+									<div class="ml-3">
+										<h5 class="">Blood Pressure</h5>
+										<p class="mb-0">90/60mmHg</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="training-block d-flex align-items-center">
+									<div class="rounded-circle iq-card-icon iq-bg-primary">
+										<i class="fa fa-flask" aria-hidden="true"></i>
+									</div>
+									<div class="ml-3">
+										<h5 class="">Diabetes</h5>
+										<p class="mb-0">200 mg/dL</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<style>
+				.sum-header{
+				width:100%;
+				}
+				.sum-row {
+				display: flex;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+				margin: 15px 0px;
+				}
+				.sum-col {
+				position: relative;
+				width: 100%;
+				padding-right: 15px;
+				padding-left: 15px;
+				margin: 0px 0px;
+				}
+				.sum-col-lg {
+				position: relative;
+				width: 100%;
+				padding-right: 15px;
+				padding-left: 15px;
+				margin: 0px 0px;
+				}
+				.clinical-data-nav-btn{
+				display: flex;
+				justify-content: flex-end;
+				}
+				@media (max-width: 479px) {
+				.clinical-data-nav-btn ul li{
+				padding: 10px 0px;
+				}
+				}
+				</style>
+				<div class="col-sm-12">
+					<div class="iq-card">
+						<div class="patient-card-header">
+							<div class="iq-header-title">
+								<h4 class=" mb-0 card-title text-primary ng-binding">Patient Details</h4>
+							</div>
+						</div>
+						<div class="clinical-data-nav-btn">
+							<ul class="nav nav-pills">
+								<li class="nav-item">
+									<a class="p-0">
+										<button type="button" ng-click="goToClinicalData()" class="btn btn-primary mr-2 ng-binding">Clinical data</button>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="p-0" ui-sref="main.patiententry({vuuid:vuuid})" href="#!/patiententry/4dbae236-1366-4ac0-bd25-ebc318549705">
+										<button type="button" class="btn btn-primary mr-2 ng-binding">Patient profile</button>
+									</a>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="btn btn-primary mr-2">Clinical
+									Data</button>
+								</li>
+								<li class="nav-item">
+									<button type="button" class="btn btn-primary mr-2">Job
+									Properties</button>
+								</li>
+							</ul>
+						</div>
+						<div class="iq-card-body pl-0 pr-0 pb-0">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="training-block d-flex align-items-center">
+										<div class="rounded-circle iq-card-icon iq-bg-primary">
+											<i class="fa fa-heart-o" aria-hidden="true"></i>
+										</div>
+										<div class="ml-3">
+											<h5 class="ng-binding">Heart Rate</h5>
+											<p class="mb-0 ng-binding">__ bpm</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="training-block d-flex align-items-center">
+										<div class="rounded-circle iq-card-icon iq-bg-primary">
+											<i class="fa fa-stethoscope" aria-hidden="true"></i>
+										</div>
+										<div class="ml-3">
+											<h5 class="ng-binding">Blood Pressure</h5>
+											<p class="mb-0 ng-binding">__/
+											__ mmHg</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="col-lg-12">
+					<div class="iq-card">
+						<div class="iq-card-header d-flex justify-content-between p-0 bg-white">
+							<div class="iq-header-title">
+								<h4 class="card-title text-primary">Review Notes</h4>
+							</div>
+							
+							<span class="iq-bg-primary btn" data-toggle="modal" data-target="#otp">
+								+ Add Review Notes
+							</span>
+						</div>
+						<ul class="nav nav-tabs" id="myTab-1" role="tablist">
+							<li class="nav-item ">
+								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">All</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Community Nurse</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">GP</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Cardiologist</a>
+							</li>
+						</ul>
+						
+						<div style="height: 270px;" class="tab-content" id="myTabContent-2">
+							<div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<div class="sum-row">
+									<div class="sum-col">
+										<h4 class="sum-title-one">Followup</h4>
+										<div class="sum-label">Date :</div>
+										<div class="sum-field">21-03-2021</div>
+									</div>
+									<div class="sum-col-lg">
+										
+										<div class="sum-field-comment">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									</div>
+								</div>
+								<div class="sum-row">
+									<div class="sum-col">
+										<h4 class="sum-title-one">Requires Further investigation</h4>
+										<div class="sum-label">Date :</div>
+										<div class="sum-field">21-03-2021</div>
+									</div>
+									<div class="sum-col-lg">
+										
+										<div class="sum-field-comment">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+								<div class="sum-row">
+									<div class="sum-col">
+										<div class="sum-label">Refer to :</div>
+										<div class="sum-field">Waikato</div>
+									</div>
+									<div class="sum-col-lg">
+										<div class="sum-label">Comment :</div>
+										<div class="sum-field-comment">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+								<div class="sum-row">
+									<div class="sum-col">
+										<div class="sum-label">Smoking cessation: </div>
+										<div class="sum-field">Yes</div>
+									</div>
+									<div class="sum-col-lg">
+										<div class="sum-label">Comment :</div>
+										<div class="sum-field-comment">Lorem Ipsum is simply dummy text of the printing and typesetting industry</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<style>
+				.iq-timeline-custom{
+				border-left: 0px solid #f2edff !important;
+				}
+				.iq-timeline-custom li {
+				margin-left: 0px !important;
+				position: relative;
+				padding: 15px 15px 0 0px !important;
+				list-style-type: none;
+				}
+				</style>
+				<div class="col-md-4">
+					<div class="iq-card">
+						<div class="iq-card-body p-0">
+							<div class="d-flex align-items-center">
+								<div class="mr-3">
+									<h5 class="">Medical Summary</h5>
+									<p class="mb-0 text-primary">View report</p>
+								</div>
+								<div class="rounded-circle iq-card-icon iq-bg-primary">
+									<i class="fa fa-download" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="iq-card">
+						<div class="iq-card-body p-0">
+							<div class="d-flex align-items-center">
+								<div class="mr-3">
+									<h5 class="">ECG report</h5>
+									<p class="mb-0 text-primary">View report</p>
+								</div>
+								<div class="rounded-circle iq-card-icon iq-bg-primary">
+									<i class="fa fa-download" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="iq-card">
+						<div class="iq-card-body p-0">
+							<div class="d-flex align-items-center">
+								<div class="mr-3">
+									<h5 class="">Discharge Summary</h5>
+									<p class="mb-0 text-primary">View report</p>
+								</div>
+								<div class="rounded-circle iq-card-icon iq-bg-primary">
+									<i class="fa fa-download" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+</div> -->
+                  </div>
+               </div>
+            </div>
+
+
+            <!-- ######## Add_Edit Clinical Info Popup ########## -->
+<div class="modal-customized add_edit_clinical_info" id="add_message" style="display:none;" tabindex="-1" role="dialog" aria-labelledby="" aria-modal="true">
+   <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">Add New Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                     </div>
+                     <div class="modal-body">
+                        <div class="form-card text-left">
+                           <!-- <div class="row">
+                              <div class="col-12">
+                                 <h4 class="card-title"></h4>
+                              </div>
+                              </div> -->
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Message Heading</label>
+                                    <input type="text" class="form-control" name="" placeholder="">
+                                 </div>
+                              </div>
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label>Message</label>
+                                    <textarea class="form-control" placeholder="Enter message" rows="4" cols="50" required=""></textarea>
+                                 </div>
+                              </div>
+                              <div class="col-lg-12">
+                                 <div class="d-inline-block w-100">
+                                    <button type="button" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="message_close btn iq-bg-danger">Cancel</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+</div>
+<!-- ######## Add_Edit Clinical Info Popup Popup ########## -->
+
+            
+            
+         </div>
+      </div>
+      <!-- Wrapper END -->
+      
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+      <!-- Wow JavaScript -->
+      <script src="js/wow.min.js"></script>
+
+      <!-- Select2 JavaScript -->
+      <script src="js/select2.min.js"></script>
+      <!-- Magnific Popup JavaScript -->
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <!-- Smooth Scrollbar JavaScript -->
+      <script src="js/smooth-scrollbar.js"></script>
+      <!-- am core JavaScript -->
+      <script src="js/core.js"></script>
+      <!-- am charts JavaScript -->
+      <script src="js/charts.js"></script>
+      <!-- am animated JavaScript -->
+      <script src="js/animated.js"></script>
+      <!-- Chart Custom JavaScript -->
+      <script src="js/chart-custom.js"></script>
+      <!-- Custom JavaScript -->
+      <script src="js/custom.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+      <script>
+         $(document).ready(function(){
+            
+            $(".graph-icon").click(function(){
+             $(".modal-customized").show();
+           });
+           $("#close-modal").click(function(){
+             $(".modal-customized").hide();
+           });
+           $(".cursor").click(function(){
+             $(".latest-data").show();
+           });
+           $(".edit-icon").click(function(){
+             $(".add_edit_clinical_info").show();
+           });
+           $("#add_message_btn").click(function(){
+             $("#add_message").show();
+           });
+           $(".close").click(function(){
+             $("#add_message").hide();
+           });
+           $(".message_close").click(function(){
+             $("#add_message").hide();
+           });
+           
+           
+           
+
+         });
+         
+      </script>
+   </body>
+</html>
