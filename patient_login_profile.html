@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+   .pat_add_cli:hover{
+      background: #82b440;
+      color:white;
+      border-color:#82b440;
+   }
+   .pat_add_cli{
+      border-radius: 25px;
+      margin-left: 2rem;
+      color: #82b440;
+      border-color: #82b440;
+      padding: 0.175rem 0.75rem;
+   }
+   .pat-prof-hed{
+      font-weight:500;
+   }
+   .pat-cli-hed{
+      padding:15px 0px;
+   }
+   .pat_prof_notes{
+      height: calc(100vh - 31rem); 
+      overflow-y: auto; 
+      padding-right: 10px;
+   }
+   .pat_review-notes{
+      width:100%;
+   }
+   .pat_more-review-note {
+       right: 30px;
+       margin-top: -23px;
+       position: absolute;
+       float: right;
+       text-decoration: underline;
+       color: #089cac;
+       cursor: pointer;
+       font-size: 12px;
+   }
+   .pat_review-notes li{
+      list-style: none;
+   }
+   .weight-icon {
+      width: 16px;
+   }
+   .patprof-hed_bd{
+      width:100%;
+      border-bottom: solid 1px #ddd;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+   }
+   .patprof-hed_bd h4{
+      padding-bottom: 0.5rem;
+   }
+   .pat-prof_medication td, .pat-prof_medication th{
+      padding: 0rem 0.5rem 0.5rem 0rem;
+   }
+   .pat-prof_medication td{
+      color: #a09e9e;
+      font-size: 12px;
+   }
+   .pat-prof_medication th{
+      font-weight: 400;
+      font-size: 12px;
+   }
+   .patient-prof-img{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 0px solid black;
+    float: left;
+    border-radius: 100% !important;
+   }
+   .patient-prof-img img{
+      height: 100%;
+      width: 100%;
+      border-radius: 100px;
+      object-fit: cover;
+   }
+   .patient-prof-img:hover .change-profile-txt {
+       width: 120px;
+       padding: 5px 5px;
+       visibility: visible;
+       opacity: 0.7;
+       cursor: pointer;
+   }
+   .change-profile-txt {
+       position: absolute;
+       bottom: 0;
+       right: 0;
+       background: black;
+       color: white;
+       margin-bottom: 0px;
+       text-align: center;
+       opacity: 0;
+       visibility: hidden;
+       -webkit-transition: visibility 0s, opacity 0.5s linear;
+       transition: visibility 0s, opacity 0.5s linear;
+   }
+</style>
+</head>
+
+<body class="sidebar-main-menu">
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+                <a href="index.html">
+                    <img src="images/logo.png" class="img-fluid" alt="">
+                    <!-- <span>Logo</span> -->
+                </a>
+                <div class="iq-menu-bt-sidebar">
+                    <div class="iq-menu-bt align-self-center">
+                        <div class="wrapper-menu">
+                            <div class="main-circle"><i class="fa fa-ellipsis-h ft-12"></i></div>
+                            <div class="hover-circle"><i class="fa fa-ellipsis-v ft-12"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar-scrollbar">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="iq-menu-title"><i class="fa fa-minus ft-12"></i><span>Menu</span></li>
+                        <li>
+                            <a href="index.html" class="iq-waves-effect"><i class="ft-12 fa fa-tachometer"></i><span>Dashboard</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="patient.html" class="iq-waves-effect"><i class="ft-12 fa fa-user"></i><span>Patient</span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="p-3"></div>
+            </div>
+            <div class="iq-logout" title="Logout">
+                <img src="./images/logout.png">
+            </div>
+            <div class="iq-sidebar-logo d-flex copyright ng-scope">
+                <a href="#">
+                    <span>Copyright 2021 ahimsa.global</span>
+                </a>
+            </div>
+        </div>
+        <!-- Page Content  -->
+        <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+            <div class="iq-top-navbar header-top-sticky">
+                <div class="iq-navbar-custom">
+                    <div class="iq-sidebar-logo">
+                        <div class="top-logo">
+                            <a href="index.html" class="logo">
+                                <img src="/images/logo.png" class="img-fluid" alt="">
+                                <span></span>
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-light p-0">
+                        <div class="logo-text-top">
+                            <!-- <span class="logo-text ">Hāpaitia te Hauora Manawa</span> -->
+                            <!-- <span class="logo-text-sub-topbar">{{'remote.health.evaluation'|translate}}</span> -->
+                        </div>
+                        <div class="iq-menu-bt align-self-center">
+                            <div class="wrapper-menu warpper-m-menu">
+                                <div class="main-circle"><i class="fa fa-align-left"></i></div>
+                                <div class="hover-circle"><i class="fa fa-ellipsis-h"></i></div>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-th-large" aria-hidden="true"></i>
+                        </button>
+                        <!-- Popup -->
+                        <!-- ngIf: showChatNotificationDiv -->
+                        <div class="iq-sub-dropdown ng-hide" id="" style="display:none;" ng-show="videoCallAlert.show">
+                            <div class="iq-card shadow-none m-0">
+                                <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                        <h5 class="mb-0 text-white">Incoming Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                    </div>
+                                    <div class="iq-sub-card b-none">
+                                        <div class="media align-items-center">
+                                            <div class="">
+                                                <img class="avatar-40 rounded" src="/images/user/01.jpg" alt="">
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <h6 class="mb-0 "></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mb-4">
+                                        <button type="button" id="chat-start" class="btn bg-primary" ng-click="acceptCall()">
+                                            <a class="text-white" data-toggle="pill" href="#video-call">Accept</a>
+                                        </button>
+                                        <button id="cancel" type="button" class="btn btn-secondary" ng-click="rejectCall()"> Cancel
+                                        </button>
+                                        <audio id="audio" src="/sound/v-call.mp3" loop="loop"></audio>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Popup -->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list">
+                                
+                                <li class="nav-item">
+                                    <a class="search-toggle iq-waves-effect" ui-sref="main.chat({duuid:0})" href="#!/chat0">
+                                        <i class="fa fa-comments-o" ng-click="goToChatPage()"></i>
+                                        <span class="bg-danger dots ng-hide" ng-show="chatMessageAlertActive"></span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="search-toggle iq-waves-effect language-title ">
+                                        <i class="fa fa-language"></i> English
+                                    </a>
+                                    <div class="iq-sub-dropdown lang-selected-dropdown">
+                                        <!-- ngRepeat: lang in localeHandler.languages -->
+                                        <div class="iq-sub-card language-title  ng-scope lang-active" ng-repeat="lang in localeHandler.languages" ng-class="{'lang-active':lang.code === localeHandler.activeLanguage.code}" ng-click="localeHandler.changeLocaleEvent(lang)">
+                                            English
+                                            <!-- ngIf: lang.code === localeHandler.activeLanguage.code --><span class="lang-selected ng-scope" ng-if="lang.code === localeHandler.activeLanguage.code"><i class="fa fa-check" aria-hidden="true"></i></span><!-- end ngIf: lang.code === localeHandler.activeLanguage.code -->
+                                        </div><!-- end ngRepeat: lang in localeHandler.languages -->
+                                        <div class="iq-sub-card language-title  ng-scope" ng-repeat="lang in localeHandler.languages" ng-class="{'lang-active':lang.code === localeHandler.activeLanguage.code}" ng-click="localeHandler.changeLocaleEvent(lang)">
+                                            Māori
+                                            <!-- ngIf: lang.code === localeHandler.activeLanguage.code -->
+                                        </div><!-- end ngRepeat: lang in localeHandler.languages -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="navbar-list">
+                            <li>
+                                <a class="search-toggle iq-waves-effect d-flex align-items-center">
+                                    <img src="images/user/john.jpg" class="img-fluid rounded mr-3" alt="user">
+                                    <div class="caption">
+                                        <!-- <span class="font-size-12 ">John Kennedy</span> -->
+                                        <h6 class="mb-0 line-height ">John</h6>
+                                    </div>
+                                </a>
+                                <div class="iq-sub-dropdown iq-user-dropdown">
+                                    <div class="iq-card shadow-none m-0">
+                                        <div class="iq-card-body p-0 ">
+                                            <a ui-sref="main.userprofile" class="iq-sub-card iq-bg-primary-hover" href="#!/userprofile">
+                                                <div class="media align-items-center">
+                                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                                        <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">My Profile</h6>
+                                                        <p class="mb-0 font-size-12">View personal profile details.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="d-inline-block w-100 text-center p-3">
+                                                <a class="bg-primary iq-sign-btn text-white " ng-click="logout()">Sign out <i class="fa fa-sign-out"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <!--<div class="patient-card-header">
+                  <div class="iq-header-title">
+                      <h3 class="mb-0 card-title text-dark ">Patient Details</h3>
+                  </div>
+              </div> -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="iq-card iq-card-block">
+                            <div class="iq-card-body">
+                                <div class="row m-1 p-1">
+                                    <div class="col-lg-4">
+                                       <ul class="speciality-list m-0 p-0">
+                                            <li class="d-flex mb-4 align-items-center">
+                                                <div class="patient-prof-img img-fluid">
+                                                    <img src="images/user/john.jpg" alt="profile-img" class="img-fluid">
+                                                    <div class="change-profile-txt" ng-click="profilePictureManager.showProfilePictureEdit()">Change / Edit</div>
+                                                </div>
+                                                <div class="media-support-info ml-3">
+                                                    <h4>John Kennedy</h4>
+                                                    <p class="mb-0">36 years old, Male</p>
+                                                </div>
+                                            </li>
+                                       </ul>
+                                       <div class="pat-cli-hed d-flex align-items-center">
+                                            <div class="d-inline-block">
+                                                <h4 class="pat-prof-hed">Clinical info</h4>
+                                                <p class="mb-0 txt-sm">updated on: 20-10-2021</p>
+                                            </div>
+                                            <div class="pat_add_cli btn">+ Add</div>
+                                       </div>
+                                       <div class="training-block mb-2 d-flex align-items-center">
+                                            <div class="patient-db-icon rounded-circle iq-card-icon">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="">Heart Rate</h5>
+                                                <p class="mb-0 ">85 bpm</p>
+                                                <!-- <p class="mb-0 txt-sm cursor">
+                                             <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                             <span class="text-danger">Latest data available</span>
+                                          </p> -->
+                                            </div>
+                                       </div>
+                                       <!-- <div class="latest-data">
+                                          <div class="ml-3 mb-3">
+                                             <p class="mb-0">86 bpm</p>
+                                          </div>
+                                       </div> -->
+                                       <div class="training-block mb-2 d-flex align-items-center">
+                                            <div class="patient-db-icon rounded-circle iq-card-icon">
+                                                <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="">Blood Pressure</h5>
+                                                <p class="mb-0 ">120/80 mmHg</p>
+                                            </div>
+                                       </div>
+                                       <div class="training-block mb-2 d-flex align-items-center">
+                                            <div class="patient-db-icon rounded-circle iq-card-icon">
+                                                <img src="images/weight.svg" class="weight-icon" alt="">
+                                            </div>
+                                            <div class="ml-3">
+                                                <h5 class="">Weight</h5>
+                                                <p class="mb-0 ">65kg</p>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+                                          <li class="nav-item">
+                                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Blood Pressure</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Heart Rate</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Weight</a>
+                                          </li>
+                                       </ul>
+                                       <div class="tab-content" id="myTabContent-2">
+                                          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                             <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
+                                          </div>
+                                          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                             <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
+                                          </div>
+                                          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                             <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                       <ul class="nav nav-tabs" id="myTab-three" role="tablist">
+                                          <li class="nav-item">
+                                             <a class="nav-link active" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="true">Patient Note</a>
+                                          </li>
+                                          <li class="nav-item">
+                                             <a class="nav-link" id="profile-tab-three" data-toggle="tab" href="#profile-three" role="tab" aria-controls="profile" aria-selected="false">Review Note</a>
+                                          </li>
+                                       </ul>
+                                       <div class="tab-content" id="myTabContent-4">
+                                          <div class="tab-pane fade active show" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
+                                             <div class="pat_prof_notes">
+                                                <div class="pat_review-notes">
+                                                   <li>
+                                                       <h6 class="float-left mb-1">Subject 1 note</h6>
+                                                       <small class="float-right mt-1">2021-07-30</small>
+                                                       <div class="d-inline-block w-100">
+                                                           <small>Reviewed By:<span class="text-warning">&nbsp;Johannes John</span></small>
+                                                           <div class="d-inline-block w-100">
+                                                               <p class="pat_prof_review-note ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                           </div>
+                                                       </div>
+                                                   </li>
+                                                </div>
+                                                <div class="pat_review-notes">
+                                                      <li>
+                                                          <h6 class="float-left mb-1">Subject 2 note</h6>
+                                                          <small class="float-right mt-1">2021-07-30</small>
+                                                          <div class="d-inline-block w-100">
+                                                              <small>Reviewed By:<span class="text-warning ">&nbsp;Cardiologist</span></small>
+                                                              <div class="d-inline-block w-100">
+                                                                  <p class="pat_prof_review-note">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                              </div>
+                                                          </div>
+                                                      </li>
+                                                </div>
+                                                <div class="pat_review-notes">
+                                                      <li>
+                                                          <h6 class="float-left mb-1">Subject 3 note</h6>
+                                                          <small class="float-right mt-1">2021-07-30</small>
+                                                          <div class="d-inline-block w-100">
+                                                              <small>Reviewed By:<span class="text-warning ">&nbsp;Cardiologist</span></small>
+                                                              <div class="d-inline-block w-100">
+                                                                  <p class="pat_prof_review-note">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                              </div>
+                                                          </div>
+                                                      </li>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="profile-three" role="tabpanel" aria-labelledby="profile-tab-three">
+                                             <div class="pat_prof_notes">
+                                                <p>Lorem Ipsum 2.</p>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="patprof-hed_bd">
+                                          <h4 class="pat-prof-hed">Medication</h4>
+                                       </div>
+                                       <div class="patprof_medicbd">
+                                          <table class="pat-prof_medication table mb-0 table-borderless">
+                                             <thead>
+                                                <tr>
+                                                   <th scope="col">Date</th>
+                                                   <th scope="col">Medicine</th>
+                                                   <th scope="col">Prescription</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>01-02-23</td>
+                                                   <td>Nitroglycerin</td>
+                                                   <td>It is a long established fact that a reader will be distracted</td>
+                                                </tr>
+                                                <tr>
+                                                   <td>15-01-23</td>
+                                                   <td>ACE inhibitors</td>
+                                                   <td>The point of using Lorem Ipsum is that it has a more-or-less</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="patprof-hed_bd">
+                                          <h4 class="pat-prof-hed">Lifestyle Nutrition</h4>
+                                       </div>
+                                       <div class="lifestyle_nut">
+                                          <h5>Diet & nutrition advice</h5>
+                                          <p class="mb-0">Eat a variety of foods: Include a mix of fruits, vegetables, whole grains</p>
+                                          <p class="mb-0">Limit processed foods: Processed foods often contain high levels of sugar, salt, and unhealthy fats.</p>
+                                          <p class="mb-0">Hydrate: Drink plenty of water and limit sugary drinks</p>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Wrapper END -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Wow JavaScript -->
+    <script src="js/wow.min.js"></script>
+    <!-- Select2 JavaScript -->
+    <script src="js/select2.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Smooth Scrollbar JavaScript -->
+    <script src="js/smooth-scrollbar.js"></script>
+    <!-- am core JavaScript -->
+    <script src="js/core.js"></script>
+    <!-- am animated JavaScript -->
+    <script src="js/animated.js"></script>
+    <script src="js/sidebar.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
