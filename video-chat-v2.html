@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title></title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="images/favicon.ico" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="css/typography.css">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/custom.css">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="css/flatpickr.min.css">
+      
+<style>
+   
+.element {
+   padding: 0px;
+   height: 100%;
+   position: absolute;
+   width: 100%;
+   background-color: #fff;
+}
+
+.element button {
+   visibility: hidden;
+   text-align: center;
+   color: white;
+   font-size: 3em;
+}
+
+.element:-webkit-full-screen {
+   background-color: #e4708a;
+   width: 100vw;
+   height: 100vh;
+}
+
+.element:-webkit-full-screen button {
+   visibility: visible;
+}
+
+.element:-webkit-full-screen a {
+   display: none;
+}
+
+.element:-moz-full-screen {
+   background-color: #e4708a;
+   width: 100vw;
+   height: 100vh;
+}
+
+.element:-moz-full-screen a {
+   visibility: hidden;
+}
+
+.element:-ms-fullscreen {
+   background-color: #e4708a;
+   width: 100vw;
+   height: 100vh;
+}
+
+.element:-ms-fullscreen a {
+   display: none;
+}
+
+.element:fullscreen {
+   background-color: #e4708a;
+   width: 100vw;
+   height: 100vh;
+}
+
+.element:full-screen a {
+   display: none;
+}
+
+.incoming-video-icon {
+   display: inline-block;
+   font-size: 25px;
+   line-height: 70px;
+   background-color: #09d261;
+   color: white;
+   border-radius: 50px;
+   width: 70px;
+   height: 70px;
+}
+
+.video-content {
+   height: calc(100vh - 7rem);
+   padding: 0rem;
+   overflow-y: hidden;
+   overflow-x: hidden;
+   position: relative;
+   text-align: center;
+   border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.iframe-border {
+   height: 100%;
+   width: 100%
+}
+
+.call-controll-btn {
+   transform: translate(-50%, 0%);
+   left: 50%;
+   height: 80px;
+   padding: 10px;
+   width: 50%;
+   background: #5c6567;
+   position: absolute;
+}
+
+.element:hover .call-controll-btn
+{
+  bottom: 0%;
+
+}
+
+/*.call-controll-btn:hover {
+   background: #3e484a;
+}*/
+.element .call-controll-btn{
+   bottom: -100%;
+}
+
+.closeFullscreen {
+   border: none;
+   padding: 10px 5px;
+   float: right;
+   color: #fff;
+   background: none;
+   font-size: 25px !important;
+}
+
+.call-cancel-btn {
+   display: inline-block;
+   font-size: 25px;
+   line-height: 60px;
+   background-color: #f73b2d;
+   color: white;
+   border-radius: 50px;
+   width: 60px;
+   height: 60px;
+   cursor: pointer;
+   margin: 0px 5px;
+}
+
+.mute-btn,
+.video-btn {
+   display: inline-block;
+   font-size: 25px;
+   line-height: 60px;
+   background-color: #27222252;
+   color: white;
+   border-radius: 50px;
+   width: 60px;
+   height: 60px;
+   cursor: pointer;
+   margin: 0px 8px;
+}
+.mute-btn-slash,
+.video-btn-slash {
+   display: inline-block;
+   font-size: 25px;
+   line-height: 60px;
+   background-color: #fff;
+   color: #000;
+   border-radius: 50px;
+   width: 60px;
+   height: 60px;
+   cursor: pointer;
+   margin: 0px 8px;
+}
+
+.mute-btn:hover,
+.video-btn:hover {
+   background-color: #fff;
+   color: #000;
+}
+
+.video-btn img {
+   width: 25px;
+   margin-top: -5px;
+}
+
+.full-screen-controls {
+   float: right;
+   position: absolute;
+   right: 0px;
+}
+
+.ext-full-txt,
+.full-scrn-txt {
+   font-size: 18px;
+}
+
+.fullscreen-btn {
+   color: #fff !important;
+   padding: 8px 15px;
+   font-size: 20px;
+   cursor: pointer;
+   float: right;
+   right: 0px;
+}
+
+.b-none {
+   border: none !important;
+}
+
+</style>
+   </head>
+   <body class="sidebar-main-menu">
+      <!-- loader Start -->
+      <div id="loading">
+         <div id="loading-center">
+         </div>
+      </div>
+      <!-- loader END -->
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+
+         <!-- Sidebar  -->
+         <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+               <a href="dashboard.html">
+               <img src="images/logo.png" class="img-fluid" alt="">
+               <span></span>
+               </a>
+               <div class="iq-menu-bt-sidebar">
+                  <div class="iq-menu-bt align-self-center">
+                     <div class="wrapper-menu">
+                        <div class="main-circle"><i class="fa fa-ellipsis-h ft-12"></i></div>
+                        <div class="hover-circle"><i class="fa fa-ellipsis-v ft-12"></i></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="sidebar-scrollbar">
+               <nav class="iq-sidebar-menu">
+                  <ul id="iq-sidebar-toggle" class="iq-menu">
+                     <li class="iq-menu-title"><i class="fa fa-minus ft-12"></i><span>Menu</span></li>
+                     <li class="active">
+                        <a href="index.html" class="iq-waves-effect"><i class="ft-12 fa fa-tachometer"></i><span>Dashboard</span></a>
+                     </li>
+                     <li>
+                        <a href="patient.html" class="iq-waves-effect"><i class="ft-12 fa fa-user"></i><span>Patient</span></a>
+                     </li>
+                  </ul>
+               </nav>
+               <div class="p-3"></div>
+            </div>
+         </div>
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+            <div class="iq-top-navbar header-top-sticky">
+               <div class="iq-navbar-custom">
+                  <div class="iq-sidebar-logo">
+                     <div class="top-logo">
+                        <a href="index.html" class="logo">
+                        <img src="images/logo.png" class="img-fluid" alt="">
+                        <span></span>
+                        </a>
+                     </div>
+                  </div>
+                  <nav class="navbar navbar-expand-lg navbar-light p-0">
+                     <!-- <div class="logo-text-top">
+                        <span class="logo-text">RH<span class="logo-text-l">e</span>IMS</span>
+                        <span class="logo-text-sub-topbar">Remote Health Evaluation & Information Management System</span>
+                     </div> -->
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <i class="ri-menu-3-line"></i>
+                     </button>
+                     <div class="iq-menu-bt align-self-center">
+                        <div class="wrapper-menu">
+                           <div class="main-circle"><i class="ri-more-fill"></i></div>
+                           <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                        </div>
+                     </div>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-list">
+                           <!-- <li class="nav-item">
+                              <a class="search-toggle iq-waves-effect language-title" href="#"><i style="font-size:20px;margin-right: 5px;" class="fa fa-map-marker" aria-hidden="true"></i> Tokoroa <i class="ft-12 fa fa-chevron-down"></i></a>
+                              <div class="iq-sub-dropdown">
+                                 <a class="iq-sub-card" href="#"><img src="images/small/flag-02.png" alt="img-flaf" class="img-fluid mr-2">French</a>
+                                 <a class="iq-sub-card" href="#"><img src="images/small/flag-03.png" alt="img-flaf" class="img-fluid mr-2">Spanish</a>
+                              </div>
+                           </li> -->
+                           <!-- <li class="nav-item iq-full-screen">
+                              <a href="#" class="iq-waves-effect" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a>
+                              </li> -->
+                           <li class="nav-item">
+                              <a href="#" class="search-toggle iq-waves-effect">
+                              <i class="fa fa-bell"></i>
+                              <span class="bg-danger dots"></span>
+                              </a>
+                              <div class="iq-sub-dropdown">
+                                 <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0 ">
+                                       <div class="bg-primary p-3">
+                                          <h5 class="mb-0 text-white">All Notifications<small class="badge  badge-light float-right pt-1">4</small></h5>
+                                       </div>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/m.png" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">New Patient added</h6>
+                                                <small class="float-right font-size-12">1 min ago</small>
+                                                <p class="mb-0">Petey Cruiser</p>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/m.png" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Patient data updated</h6>
+                                                <small class="float-right font-size-12">5 min ago</small>
+                                                <p class="mb-0">Jond Bini</p>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/f.png" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Xray Report</h6>
+                                                <small class="float-right font-size-12">20 min ago</small>
+                                                <p class="mb-0">Anna Sthesia</p>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/f.png" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">New Patient added</h6>
+                                                <small class="float-right font-size-12">1 hour ago</small>
+                                                <p class="mb-0">Fenny</p>
+                                             </div>
+                                          </div>
+                                       </a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="nav-item dropdown">
+                              <a href="#" class="search-toggle iq-waves-effect">
+                              <i class="fa fa-video-camera"></i>
+                              <span class="bg-primary count-mail"></span>
+                              </a>
+                              <div class="iq-sub-dropdown">
+                                 <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0 ">
+                                       <div class="bg-primary p-3">
+                                          <h5 class="mb-0 text-white">Make a Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                       </div>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Barb Dwyer</h6>
+                                                <small class="float-left font-size-12">Online</small>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Terry Aki 
+                                                   <small class="float-right font-size-12">
+                                                   <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                                   </small>
+                                                </h6>
+                                                <small class="float-left font-size-12">Offline (last seen 5 min ago)
+                                                </small>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Robin Banks
+                                                   <small class="float-right font-size-12">
+                                                   <i class="fa fa-phone text-primary" title="Phone call"></i>
+                                                   </small>
+                                                </h6>
+                                                <small class="float-left font-size-12">Offline (last seen 10 min ago)</small>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/04.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Barry Wine</h6>
+                                                <small class="float-left font-size-12">Online</small>
+                                             </div>
+                                          </div>
+                                       </a>
+                                       <a href="#" class="iq-sub-card" >
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/05.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Otto Matic</h6>
+                                                <small class="float-left font-size-12">Online</small>
+                                             </div>
+                                          </div>
+                                       </a>
+                                    </div>
+                                 </div>
+                              </div>
+
+
+                              <div class="iq-sub-dropdown" id="v-call-accept" style="display:none;">
+                                 <div class="iq-card shadow-none m-0">
+                                    <div class="iq-card-body p-0 ">
+                                       <div class="bg-primary p-3">
+                                          <h5 class="mb-0 text-white">Incoming Call<small class="badge  badge-light float-right pt-1"></small></h5>
+                                       </div>
+                                       <div class="iq-sub-card b-none">
+                                          <div class="media align-items-center">
+                                             <div class="">
+                                                <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                             </div>
+                                             <div class="media-body ml-3">
+                                                <h6 class="mb-0 ">Dr. Barb Dwyer</h6>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="text-center mb-4">
+                                          
+                                          <button type="button" id="chat-start" class="btn bg-primary" onclick="pauseAudio()">
+                                             <a  data-toggle="pill" href="#video-call" style="color:#fff;">Accept</a>
+                                          </button>
+                                          <button id="cancel" onclick="pauseAudio()" type="button" class="btn btn-secondary">      Cancel
+                                          </button>
+                                          <audio id="audio" src="v-call.mp3" loop="loop"></audio>
+                                       </div>
+                                       
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </li>
+                        </ul>
+                     </div>
+                     <ul class="navbar-list">
+                        <li>
+                           <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                              <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
+                              <div class="caption">
+                                 <span class="font-size-12">Marilyn Rose</span>
+                                 <h6 class="mb-0 line-height">Maori Community Nurse</h6>
+                              </div>
+                           </a>
+                           <div class="iq-sub-dropdown iq-user-dropdown">
+                              <div class="iq-card shadow-none m-0">
+                                 <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                       <h5 class="mb-0 text-white line-height"></h5>
+                                       <span class="text-white font-size-12">Available</span>
+                                    </div>
+                                    <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                       <div class="media align-items-center">
+                                          <div class="rounded iq-card-icon iq-bg-primary">
+                                             <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">My Profile</h6>
+                                             <p class="mb-0 font-size-12">View personal profile details.</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                       <div class="media align-items-center">
+                                          <div class="rounded iq-card-icon iq-bg-primary">
+                                             <i class="fa fa-address-card" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Edit Profile</h6>
+                                             <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                       <div class="media align-items-center">
+                                          <div class="rounded iq-card-icon iq-bg-primary">
+                                             <i class="fa fa-cog" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Account settings</h6>
+                                             <p class="mb-0 font-size-12">Manage your account parameters.</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="privacy-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                       <div class="media align-items-center">
+                                          <div class="rounded iq-card-icon iq-bg-primary">
+                                             <i class="fa fa-lock" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">Privacy Settings</h6>
+                                             <p class="mb-0 font-size-12">Control your privacy parameters.</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <div class="d-inline-block w-100 text-center p-3">
+                                       <a class="bg-primary iq-sign-btn" href="sign-in-c.html" role="button">Sign out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </nav>
+               </div>
+            </div>
+            <!-- TOP Nav Bar END -->
+
+            <style>
+               .video-call {
+                   width: 100%;
+                   height: calc(100vh - 200px);
+                   border-radius: 16px;
+                   overflow: hidden;
+                   display: flex;
+                   flex-wrap: wrap;
+               }
+               .video-call-actions {
+                  display: flex;
+                  justify-content:center;
+                  align-items: center;
+                  padding-top: 25px;
+                  max-width: 500px;
+                  margin: 0 auto;
+               }
+               .video-action-button {
+                   background-repeat: no-repeat;
+                   background-size: 24px;
+                   border: none;
+                   height: 48px;
+                   margin: 0 8px;
+                   box-shadow: 0 2px 6px 0 rgba(136, 148, 171, 0.2), 0 24px 20px -24px rgba(71, 82, 107, 0.1);
+                   border-radius: 8px;
+                   width: 48px;
+                   cursor: pointer;
+                   outline: none;
+                   background-color: #fff;
+                   font-size: 20px;
+               }
+               .endcall{
+                  background-color: #f44336;
+                  color: #fff;
+               }
+               .video-hide{
+                  width:25px;
+               }
+               .host-img {
+                   width: 100%;
+                   border-radius: 15px;
+               }
+               .host-img {
+                   width: 100%;
+                   border-radius: 15px;
+               }
+               .chat-sidebar{
+                  height: calc(100vh - 200px);
+              }
+               .joined {
+                  width:100%;
+               }
+               .joined-users {
+                   width:100%;
+               }
+               .joined-users-list {
+                   display: flex;
+                   width: 48%;
+                   height: 8rem;
+                   float: left;
+                   padding: 0px 0px;
+                   margin: 0px 2% 2% 0px;
+                   background: #fbfbfb;
+                   border-radius: 10px;
+                   -webkit-box-shadow: 0px 0px 25px 0px rgb(45 69 95 / 10%);
+                   -moz-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
+                   box-shadow: 0px 0px 25px 0px rgb(45 69 95 / 10%);
+                   justify-content: center;
+                   align-items: center;
+               }
+               .joined-users-list img {
+                  width: 45%;
+                  border-radius: 50px;
+               }
+            </style>
+
+
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-9">
+                     <div class="video-call">
+                        <img src="https://sreejith1234.github.io/video-chat/assets/images/users/image.jpeg" class="host-img">
+                     </div>
+                     <div class="video-call-actions ">
+                         <button class="video-action-button mic">
+                            <i class="fa fa-microphone" aria-hidden="true"></i>
+                         </button>
+                         <button class="video-action-button mic-mute">
+                            <i class="fa fa-microphone-slash" aria-hidden="true"></i>
+                         </button>
+                         <button class="video-action-button endcall">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                         </button>
+                         <button class="video-action-button camera">
+                            <i class="fa fa-video-camera" aria-hidden="true"></i>
+                         </button>
+                         <button class="video-action-button camera-hide">
+                            <img src="images/camera.svg" class="video-hide">
+                         </button>
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="chat-sidebar">
+                        <div class="joined">
+                           <div class="joined-users">
+                              <div class="joined-users-list">
+                                 <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg">
+                              </div>
+                              <div class="joined-users-list">
+                                 <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg">
+                              </div>
+                              <div class="joined-users-list">
+                                 <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg">
+                              </div>
+                              <div class="joined-users-list">
+                                 <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg">
+                              </div>
+                              <div class="joined-users-list">
+                                 <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+      </div>
+      <!-- Wrapper END -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- Wow JavaScript -->
+      <script src="js/wow.min.js"></script>
+      <!-- Select2 JavaScript -->
+      <script src="js/select2.min.js"></script>
+      <!-- Magnific Popup JavaScript -->
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <!-- Smooth Scrollbar JavaScript -->
+      <script src="js/smooth-scrollbar.js"></script>
+      <!-- am core JavaScript -->
+      <script src="js/core.js"></script>
+     
+      <!-- Custom JavaScript -->
+      <script src="js/custom.js"></script>
+      <script>
+         var elem = document.documentElement;
+         function openFullscreen() {
+           if (elem.requestFullscreen) {
+             elem.requestFullscreen();
+           } else if (elem.webkitRequestFullscreen) { /* Safari */
+             elem.webkitRequestFullscreen();
+           } else if (elem.msRequestFullscreen) { /* IE11 */
+             elem.msRequestFullscreen();
+           }
+         }
+         
+         function closeFullscreen() {
+           if (document.exitFullscreen) {
+             document.exitFullscreen();
+           } else if (document.webkitExitFullscreen) { /* Safari */
+             document.webkitExitFullscreen();
+           } else if (document.msExitFullscreen) { /* IE11 */
+             document.msExitFullscreen();
+           }
+         }
+      </script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+      <script type="text/javascript">
+         $( document ).ready(function() {
+            $("#cancel").click(function(){
+               $("#v-call-accept").hide();
+            });
+            $("#chat-start").click(function(){
+               $("#v-call-accept").hide();
+            });
+            $("#incoming-call").click(function(){
+               $("#v-call-accept").show();
+            });
+            
+         });
+      </script>
+      <script>
+      function play() {
+        var audio = document.getElementById("audio");
+        audio.play();
+      }
+
+      function pauseAudio() {
+         audio.pause();
+      }
+    </script>
+    <script>
+      $( document ).ready(function() {
+
+         $('#video-min').click(function() {
+            $("#video-min").hide();
+            $("#video-max").show();
+            $('.modal-xl-video-call').css({
+               height: 'auto',
+               bottom:'0px',
+               width: '100%',
+               right:'0px',
+               margin:'0px auto',
+            });
+
+            $('.video-content').css({
+               height: '150px',
+               
+            });
+            
+            $('.video-modal').css({
+               border: 'solid 1px #ddd',
+               width: '20%',
+               height: '200px',
+               top:'auto',
+               left:'auto',
+               right:'15px',
+               bottom:'15px',
+               
+            });
+           
+         });
+
+
+         $('#video-max').click(function() {
+            $("#video-max").hide();
+            $("#video-min").show();
+            $('.modal-xl-video-call').css({
+               position:'relative',
+               height: 'auto',
+               bottom:'0px',
+               width: '80%',
+               margin:'20px auto',
+            });
+            $('.video-content').css({
+               height: 'calc(100vh - 5.6rem)',
+            });
+            $('.video-modal').css({
+               border: 'none',
+               width: '100%',
+               height: '100%',
+               top:'0',
+               left:'0',
+               right:'0',
+               bottom:'0',
+               
+            });
+         });
+         
+         
+      });
+    </script>
+
+    <script>
+      $(document).ready (function(){
+         $( ".alert-success" ).fadeIn( 300 ).delay( 5000 ).fadeOut( 400 );
+      });
+   </script>
+
+   </body>
+</html>
+
+<!-- 851-line 
+chat-header-icons > a{
+   padding: 10px 0px 10px 0;
+}
+
+.navbar-list li>a{
+   display:inherit;
+}
+
+.iq-card-icon{
+    padding: 20px 0;
+}
+
+.modal-video-content{
+   border-radius: 0px;
+}
+.video-content{
+   border-bottom-right-radius: 0px;
+   border-bottom-left-radius: 0px;
+   height: 155px;
+} -->
