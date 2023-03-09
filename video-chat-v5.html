@@ -591,11 +591,12 @@
                    display: flex;
                    flex-wrap: wrap;
                }
-               .video-call-block:only-child {
-                  height: 100%;
-               }
+               
                .video-call-block:not(:only-child) {
                   height: 50%;
+               }
+               .video-call-block:only-child {
+                  height: 100%;
                }
                .video-call-stream{
                   height: 100%;
@@ -781,7 +782,6 @@
                                           <div class="video-call-block">
                                              <div class="video-call-img">
                                                 <i>K</i>
-                                                <!-- <img src="https://sreejith1234.github.io/video-chat/assets/images/users/avatar-2.jpg"> -->
                                              </div>
                                           </div>
                                        </div>
@@ -1024,12 +1024,7 @@ $(document).ready(function() {
     $('.video-call-outer').each(function() {
       $(this).children(':not(:first-child)').show();
     });
-    $('.video-call-block:not(:only-child)').css({
-      height: '50%',
-    });
-    $('.video-call-block:not(:only-child)').css({
-      height: '100%',
-    });
+    
   });
 
   $('#min-btn').click(function() {
@@ -1063,9 +1058,7 @@ $(document).ready(function() {
     $('.preview-section .sub-container-right').css({
       display: 'none',
     });
-    $('.video-call-block:not(:only-child)').css({
-      height: '100%',
-    });
+    
     $('.video-call-outer').each(function() {
       $(this).children(':not(:first-child)').hide();
     });
