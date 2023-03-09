@@ -751,16 +751,19 @@
             
 
                <div class="videocall_overlay"></div>
-               <div class="videocall_modal-xl" id="myModal">
+               <div class="videocall_modal-xl">
                   <div class="videocall_content">
                      <div class="modal-header modal-video-header">
                         <h5 class="modal-title">Video Call</h5>
                         <div class="video-header-btn">
                            <button id="max-btn" type="button">
-                                 <i class="fa fa-window-maximize"></i>
+                                 &#128470;
                            </button>
                            <button id="min-btn" type="button">
-                                 <i class="fa fa-window-minimize"></i>
+                                 &#8722;
+                           </button>
+                           <button id="video_closebtn" type="button">
+                                 &times;
                            </button>
                         </div>
                      </div>
@@ -921,6 +924,8 @@
    }
    .modal-video-header{
       padding: .50rem 1rem;
+      align-items: center;
+      line-height: 1.2;
    }
    .modal-video-body{
       padding:0px;
@@ -932,19 +937,27 @@
        display: flex;
        align-items: center;
        justify-content: center;
-       padding: 10px;
+       padding: 0px 10px;
+      font-size: 24px;
        margin: 0;
    }
    .video-header-btn button:hover {
        background: #efefef;
        color: #000000;
    }
-   .video-header-btn button i{
-      margin-top: -5px
-   }
+   
    .videocall_content_body{
 
       height:100%;
+   }
+   .video-header-btn{
+      display: flex;
+   }
+   #video_closebtn{
+      color:red;
+   }
+   #max-btn{
+      font-size:20px;
    }
 </style>
 
