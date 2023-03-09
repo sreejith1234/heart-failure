@@ -578,7 +578,7 @@
                   width:25px;
                }
                .video-call-container {
-                   height: 88%;
+                   height: 85%;
                    flex: 1;
                    width: 100%;
                    display: flex;
@@ -640,7 +640,7 @@
                }
                .preview-section{
                   padding: 100px;
-                  height: calc(100vh - 150px);
+                  height: 100%;
                   background: #fff;
                   border-radius: 10px;
                }
@@ -929,6 +929,7 @@
    }
    .modal-video-body{
       padding:0px;
+      height: calc(100% - 3rem);
    }
    .video-header-btn button{
       border: solid #000000 0px;
@@ -994,7 +995,7 @@ $(document).ready(function() {
   $("#max-btn").hide();
 
   $('#max-btn').click(function() {
-    // Switch to the minimized state
+    // Switch to the maximized state
     $("#max-btn").hide();
     $("#min-btn").show();
     $('.videocall_modal-xl').css({
@@ -1009,7 +1010,7 @@ $(document).ready(function() {
       transition: 'none',
     });
     $('.video-call-container').css({
-      height: '88%',
+      height: '85%',
     });
     $('.videocall_overlay').show();
     $('.video-call-img i').css({
@@ -1017,10 +1018,19 @@ $(document).ready(function() {
       width: '80px',
       fontsize: '30px',
     });
+    $('.privew-section .sub-container-right').css({
+      display: 'block',
+    });
+    $('.video-call-outer').each(function() {
+      $(this).children(':not(:first-child)').show();
+    });
+    $('.video-call-block:not(:only-child)').css({
+      height: '50%',
+    });
   });
 
   $('#min-btn').click(function() {
-    // Switch to the maximized state
+    // Switch to the minimized state
     $("#max-btn").show();
     $("#min-btn").hide();
     $('.videocall_modal-xl').css({
@@ -1043,6 +1053,20 @@ $(document).ready(function() {
       width: '40px',
       fontsize: '12px',
     });
+    $('.preview-section').css({
+      padding: '0px',
+      height: '100%',
+    });
+    $('.privew-section .sub-container-right').css({
+      display: 'none',
+    });
+    $('.video-call-block:not(:only-child)').css({
+      height: '100%',
+    });
+    $('.video-call-outer').each(function() {
+      $(this).children(':not(:first-child)').hide();
+    });
+     
   });
 });
 
