@@ -234,6 +234,7 @@
                                 <li class="nav-item">
                                     <a class="search-toggle iq-waves-effect language-title ">
                                         <i class="fa fa-language"></i> English
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
                                     </a>
                                     <div class="iq-sub-dropdown lang-selected-dropdown">
                                         <!-- ngRepeat: lang in localeHandler.languages -->
@@ -247,8 +248,25 @@
                                         </div><!-- end ngRepeat: lang in localeHandler.languages -->
                                     </div>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="search-toggle iq-waves-effect language-title">
+                                        <i class="fa fa-th-large"></i> Screening
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="iq-sub-dropdown lang-selected-dropdown">
+                                        <div class="iq-sub-card language-title lang-active">
+                                            Screening
+                                            <span class="lang-selected">
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <div class="iq-sub-card language-title">REHAB</div>
+                                        <div class="iq-sub-card language-title">Heart Failure</div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
+
                         <ul class="navbar-list">
                             <li>
                                 <a class="search-toggle iq-waves-effect d-flex align-items-center">
@@ -352,23 +370,23 @@
                                         </div>
                                         <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                                           <li class="nav-item">
-                                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Blood Pressure</a>
+                                             <a class="nav-link active" id="Pressure-tab" data-toggle="tab" href="#Pressure" role="tab" aria-controls="Pressure" aria-selected="true">Blood Pressure</a>
                                           </li>
                                           <li class="nav-item">
-                                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Heart Rate</a>
+                                             <a class="nav-link" id="Heart-tab" data-toggle="tab" href="#Heart" role="tab" aria-controls="Heart" aria-selected="false">Heart Rate</a>
                                           </li>
                                           <li class="nav-item">
-                                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Weight</a>
+                                             <a class="nav-link" id="Weight-tab" data-toggle="tab" href="#Weight" role="tab" aria-controls="Weight" aria-selected="false">Weight</a>
                                           </li>
                                        </ul>
                                        <div class="tab-content" id="myTabContent-2">
-                                          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                          <div class="tab-pane fade show active" id="Pressure" role="tabpanel" aria-labelledby="Pressure-tab">
                                              <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
                                           </div>
-                                          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                          <div class="tab-pane fade" id="Heart" role="tabpanel" aria-labelledby="Heart-tab">
                                              <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
                                           </div>
-                                          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                          <div class="tab-pane fade" id="Weight" role="tabpanel" aria-labelledby="Weight-tab">
                                              <img src="images/graph.png" alt="profile-img" class="img-fluid mt-3">
                                           </div>
                                        </div>
@@ -376,14 +394,14 @@
                                     <div class="col-lg-8">
                                        <ul class="nav nav-tabs" id="myTab-three" role="tablist">
                                           <li class="nav-item">
-                                             <a class="nav-link active" id="home-tab-three" data-toggle="tab" href="#home-three" role="tab" aria-controls="home" aria-selected="true">Patient Note</a>
+                                             <a class="nav-link active" id="patient-note-tab" data-toggle="tab" href="#patient-note" role="tab" aria-controls="patient-note" aria-selected="true">Patient Note</a>
                                           </li>
                                           <li class="nav-item">
-                                             <a class="nav-link" id="profile-tab-three" data-toggle="tab" href="#profile-three" role="tab" aria-controls="profile" aria-selected="false">Review Note</a>
+                                             <a class="nav-link" id="review-note-tab" data-toggle="tab" href="#review-note" role="tab" aria-controls="review-note" aria-selected="false">Review Note</a>
                                           </li>
                                        </ul>
                                        <div class="tab-content" id="myTabContent-4">
-                                          <div class="tab-pane fade active show" id="home-three" role="tabpanel" aria-labelledby="home-tab-three">
+                                          <div class="tab-pane fade active show" id="patient-note" role="tabpanel" aria-labelledby="patient-note-tab">
                                              <div class="pat_prof_notes">
                                                 <div class="pat_review-notes">
                                                    <li>
@@ -423,7 +441,7 @@
                                                 </div>
                                              </div>
                                           </div>
-                                          <div class="tab-pane fade" id="profile-three" role="tabpanel" aria-labelledby="profile-tab-three">
+                                          <div class="tab-pane fade" id="review-note" role="tabpanel" aria-labelledby="review-note-tab">
                                              <div class="pat_prof_notes">
                                                 <p>Lorem Ipsum 2.</p>
                                              </div>
