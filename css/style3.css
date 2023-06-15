@@ -1,0 +1,20 @@
+.btn-primary {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.badge-primary {
+    color: #fff;
+    background-color: #17a2b8;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #17a2b8;
+    background-color: #17a2b8;
+}
+.text-primary{
+  color:#17a2b8 !important;
+}
+a {
+    color: #17a2b8;
+}
