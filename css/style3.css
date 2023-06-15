@@ -18,3 +18,15 @@
 a {
     color: #17a2b8;
 }
+/*For test*/
+.badge-secondary{
+    background-color: #17a2b8;
+}
+.text-success{
+    color: #17a2b8;
+}
+.btn-secondary{
+    color: #fff;
+    border-color: #17a2b8;
+    background-color: #17a2b8;
+}
