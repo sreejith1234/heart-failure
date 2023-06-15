@@ -23,7 +23,7 @@ a {
     background-color: #17a2b8;
 }
 .text-success{
-    color: #17a2b8;
+    color: #17a2b8 !important;
 }
 .btn-secondary{
     color: #fff;
