@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Viewer</title>
+  <style>
+    /* Styles for the image viewer */
+    #image-viewer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      height: 50%;
+      background-color: white;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #viewer-image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      color: #ff0000;
+      font-size: 18px;
+    }
+    .zoom-controls {
+      margin-top: 10px;
+    }
+    .zoom-controls button {
+      margin: 0 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Clickable Image Icon -->
+  <div id="image-icon">
+    <p>Clickable Image Icon</p>
+    <img src="https://communitystage.datavaultforhealth.com/images/theme/image.png" alt="Image Icon" />
+  </div>
+
+  <!-- Hidden Image Viewer -->
+  <div id="image-viewer" class="hidden">
+    <span class="close-button" id="close-button">&#10005;</span>
+    <div id="viewer-image-container">
+      <img id="viewer-image" src="" alt="Image" />
+    </div>
+    <div class="zoom-controls">
+      <button id="zoom-in">Zoom In</button>
+      <button id="zoom-out">Zoom Out</button>
+    </div>
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+  <script>
+    const imageIcon = document.getElementById("image-icon");
+    const imageViewer = document.getElementById("image-viewer");
+    const viewerImage = document.getElementById("viewer-image");
+    const closeButton = document.getElementById("close-button");
+    const zoomInButton = document.getElementById("zoom-in");
+    const zoomOutButton = document.getElementById("zoom-out");
+
+    let currentZoom = 100; // Initial zoom level (in percentage)
+    const zoomStep = 10; // Zoom step size
+
+    zoomInButton.addEventListener("click", function () {
+      currentZoom += zoomStep;
+      updateImageZoom();
+    });
+
+    zoomOutButton.addEventListener("click", function () {
+      currentZoom -= zoomStep;
+      updateImageZoom();
+    });
+
+    function updateImageZoom() {
+      viewerImage.style.width = currentZoom + "%";
+      viewerImage.style.height = "auto";
+    }
+  
+
+    imageIcon.addEventListener("click", function () {
+      // Image URL
+      const imageUrl = "https://communitystage.datavaultforhealth.com/images/theme/user/1.jpg";
+
+      // Update the viewer image
+      viewerImage.setAttribute("src", imageUrl);
+      imageViewer.style.display = "flex"; // Display the image viewer
+    });
+
+    closeButton.addEventListener("click", function () {
+      imageViewer.style.display = "none"; // Hide the image viewer
+    });
+
+    imageViewer.addEventListener("click", function (event) {
+      if (event.target === imageViewer) {
+        imageViewer.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
