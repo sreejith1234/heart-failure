@@ -1,0 +1,149 @@
+.patient-navbar {
+    background: #fff;
+}
+.patient-log-main .navbar-brand{
+   color:#212c59;
+   font-size: 30px;
+   font-weight: 500;
+}
+#patient-log .nav-item{
+   padding: 0px 30px;
+}
+#patient-log .nav-item a{
+   color:#212c59;
+   font-size: 20px;
+}
+.pat-section-main{
+  margin-top:110px;
+}
+.patient-banner-txt h1{
+  color:#fff;
+}
+.patient-banner-txt p{
+   font-size: 1.25rem;
+    font-weight: 300;
+    color:#fff;
+}
+.patient-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc( 54vh - 0px);
+  background-image: linear-gradient(to bottom, rgb(0 0 0 / 44%), rgb(0 0 0 / 45%)), url(../images/summerbanner.jpg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.patient-banner-txt {
+  padding: 30px;
+  margin-bottom:0px;
+}
+.btn-switch-head{
+  color: #212c59;
+  font-weight: 500;
+  font-size: 2.500em;
+}
+.btn-switch-main{
+  display:flex;
+}
+.btn-switch-block{
+  width:20%;
+  padding:15px;
+  cursor: pointer;
+}
+.btn-switch-icon{
+  background:#fff;
+  padding:40px;
+  display: flex;
+  justify-content: center;
+}
+.btn-switch-icon:hover{
+  background: #212c59;
+}
+.btn-switch-icon:hover i{
+  color:#fff;
+}
+.btn-switch-icon i{
+  color: #212c59;
+  font-size: 30px;
+}
+.btn-switch-text {
+    text-align: center;
+    color: #212c59;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+.dashboard-heading{
+  color: #212c59;
+  font-weight: 500;
+  font-size: 2.500em;
+  display: flex;
+  justify-content: center;
+}
+.pat-db-main{
+  background: #212c5952;
+  border-radius:10px;
+}
+.pat-db-main h3 {
+    color: #212c59;
+    font-weight: 500;
+    font-size: 1.7em;
+    text-align: center;
+    padding: 20px 20px;
+}
+.patdb-addicon{
+  display: flex;
+    justify-content: center;
+}
+.patdb-addicon i {
+  background: #212c59;
+    color: #fff;
+    border-radius: 50px;
+    padding: 14px 15px;
+    cursor: pointer;
+}
+.patdb_infobtn {
+    color: #fff;
+    background-color: #212c59;
+    border-color: #212c59;
+}
+.patdb_infobtn:hover {
+    color: #fff;
+    background-color: #212c59;
+    border-color: #212c59;
+    box-shadow: 0 0 5px #212e6682, 0 0 25px #212e668f;
+}
+.pdbleft-status{
+  text-align: center;
+}
+.pdbleft-status h2{
+  color:#000;
+}
+.pdb-footer{
+  text-align: center;
+  width:100%;
+  padding:20px;
+  background:#212c59;
+  color:#fff;
+  font-size: 14px;
+  margin-top:50px;
+}
+.pdbleft-status p{
+  color:#000;
+}
+.pat-db-info {
+    background: #C5E1A5;
+    border-radius: 10px;
+    color: #000;
+    padding: 15px;
+}
+@media (max-width: 768px) {
+  .btn-switch-main{
+    flex-wrap: wrap;
+  }
+  .btn-switch-block{
+    width:50%;
+  }
+}
