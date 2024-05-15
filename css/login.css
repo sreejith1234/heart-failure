@@ -550,3 +550,9 @@ input {
     font-size: .85rem;
     color: red;
 }
+
+@media screen and (orientation: landscape) {
+  body {
+    transform: rotate(90deg) !important;
+  }
+}
