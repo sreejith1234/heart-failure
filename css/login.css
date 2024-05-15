@@ -551,8 +551,10 @@ input {
     color: red;
 }
 
-@media screen and (orientation: landscape) {
-  body {
-    transform: rotate(90deg) !important;
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+    body {
+    transform: rotate(0deg) !important;
   }
-}
+
+
+  }
