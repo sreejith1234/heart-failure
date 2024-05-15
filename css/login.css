@@ -411,7 +411,7 @@ input {
         height: 100% !important;
     }
     .wrap {
-        height: 100% !important;
+        height: calc(100% - 20px) !important;
     }
 }
 /* MEDIUM VIEWPORT */
